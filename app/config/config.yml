@@ -13,6 +13,7 @@ parameters:
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
+    serializer: { enable_annotations: true }
     #translator: ~
     secret: '%secret%'
     router:
@@ -71,3 +72,4 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+    
