@@ -1,0 +1,15 @@
+app_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+admin_registration:
+    path:  /register/admin
+    defaults: { _controller: AppBundle:Registration:registerAdmin }
+
+travailleur_registration:
+    path:  /register/travailleur
+    defaults: { _controller: AppBundle:Registration:registerTravailleur }
+
+entreprise_registration:
+    path:  /register/entreprise
+    defaults: { _controller: AppBundle:Registration:registerEntreprise }

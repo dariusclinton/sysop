@@ -1,0 +1,13 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    Admin
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {{ form_start(form, {'method': 'post', 'attr': {'class': 'admin_registration'}}) }}
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+{% endblock fos_user_content %}
