@@ -7,3 +7,91 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+
+#   couche Dao
+    app.admin.dao:
+        class: AppBundle\Dao\AdminDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.attributionProjet.dao:
+        class: AppBundle\Dao\AttributionProjetDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.demandeLocation.dao:
+        class: AppBundle\Dao\DemandeLocationDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.demandeParticipation.dao:
+        class: AppBundle\Dao\DemandeParticipationDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.demandeService.dao:
+        class: AppBundle\Dao\DemandeServiceDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.entreprise.dao:
+        class: AppBundle\Dao\EntrepriseDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.location.dao:
+        class: AppBundle\Dao\LocationDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.note.dao:
+        class: AppBundle\Dao\NoteDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.programme.dao:
+        class: AppBundle\Dao\ProgrammeDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.programmeLocation.dao:
+        class: AppBundle\Dao\ProgrammeLocationDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.projet.dao:
+        class: AppBundle\Dao\ProjetDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.solliciter.dao:
+        class: AppBundle\Dao\SolliciterDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.travailleur.dao:
+        class: AppBundle\Dao\TravailleurDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.utilisateur.dao:
+        class: AppBundle\Dao\UtilisateurDao
+        arguments: ["@doctrine.orm.entity_manager"]
+    
+    
+    
+    #   couche Service       
+    app.admin.metier:
+        class: AppBundle\Metier\AdminMetier
+        arguments: ["@app.admin.dao"]
+    app.attributionProjet.metier:
+        class: AppBundle\Metier\AttributionProjetMetier
+        arguments: ["@app.attributionProjet.dao"]
+    app.demandeLocation.metier:
+        class: AppBundle\Metier\DemandeLocationMetier
+        arguments: ["@app.demandeLocation.dao"]
+    app.demandeService.metier:
+        class: AppBundle\Metier\DemandeParticipationMetier
+        arguments: ["@app.demandeService.dao"]
+    app.entreprise.metier:
+        class: AppBundle\Metier\EntrepriseMetier
+        arguments: ["@app.entreprise.dao"]
+    app.location.metier:
+        class: AppBundle\Metier\LocationMetier
+        arguments: ["@app.location.dao"]
+    app.note.metier:
+        class: AppBundle\Metier\NoteMetier
+        arguments: ["@app.note.dao"]
+    app.programme.metier:
+        class: AppBundle\Metier\ProgrammeMetier
+        arguments: ["@app.programme.dao"]
+    app.programmeLocation.metier:
+        class: AppBundle\Metier\ProgrammeLocationMetier
+        arguments: ["@app.programmeLocation.dao"]
+    app.projet.metier:
+        class: AppBundle\Metier\ProjetMetier
+        arguments: ["@app.projet.dao"]
+    app.solliciter.metier:
+        class: AppBundle\Metier\SolliciterMetier
+        arguments: ["@app.solliciter.dao"]
+    app.travailleur.metier:
+        class: AppBundle\Metier\TravailleurMetier
+        arguments: ["@app.travailleur.dao"]
+    app.utilisateur.metier:
+        class: AppBundle\Metier\UtilisateurMetier
+        arguments: ["@app.utilisateur.dao"]
