@@ -11,7 +11,7 @@ use AppBundle\Dao\TravailleurDao;
  *
  * @author tsafack
  */
-class travailleurMetier {
+class TravailleurMetier {
     
     private $travailleurDao;
     

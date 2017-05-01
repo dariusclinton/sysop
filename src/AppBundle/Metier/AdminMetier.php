@@ -26,7 +26,7 @@ class AdminMetier {
     }
 
     public function findAll() {
-        return $this->adminDao->findAll($admin);
+        return $this->adminDao->findAll();
     }
 
     public function find($id) {

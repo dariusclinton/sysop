@@ -65,6 +65,9 @@ services:
     app.demandeLocation.metier:
         class: AppBundle\Metier\DemandeLocationMetier
         arguments: ["@app.demandeLocation.dao"]
+    app.demandeParticipation.metier:
+        class: AppBundle\Metier\DemandeParticipationMetier
+        arguments: ["@app.demandeparticipation.dao"]
     app.demandeService.metier:
         class: AppBundle\Metier\DemandeParticipationMetier
         arguments: ["@app.demandeService.dao"]
