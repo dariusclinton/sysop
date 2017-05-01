@@ -1,13 +1,6 @@
 app:
-    resource: "@AppBundle/Controller/Backend"
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
-    type: annotation
-
-api:
-    resource: "@AppBundle/Controller/Api"
-    prefix:   /api
-    type: rest
-
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

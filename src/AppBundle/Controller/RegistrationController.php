@@ -1,17 +1,11 @@
 <?php
 
-namespace AppBundle\Controller\Backend;
+namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
 
 class RegistrationController extends Controller
 {
-
-    /**
-     * @Route("/register/admin", name="admin_registration")
-     */
     public function registerAdminAction()
     {
         return $this->container
@@ -19,9 +13,6 @@ class RegistrationController extends Controller
                     ->register('AppBundle\Entity\Admin');
     }
 
-    /**
-     * @Route("/register/travailleur", name="travailleur_registration")
-     */
     public function registerEntrepriseAction()
     {
         return $this->container
@@ -29,9 +20,6 @@ class RegistrationController extends Controller
                     ->register('AppBundle\Entity\Entreprise');
     }
 
-    /**
-     * @Route("/register/entreprise", name="entreprise_registration")
-     */
     public function registerTravailleurAction()
     {
         return $this->container
