@@ -1,35 +1,57 @@
 <?php
 
-namespace AppBundle\Metier;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+namespace AppBundle\Metier;
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Location;
-use AppBundle\Dao\LocationDao;
+
+/**
+ * Description of LocationMetier
+ *
+ * @author fd
+ */
 
 class LocationMetier {
+    private $em;
 
-    private $locationDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    public function __construct(LocationDao $locationDao) {
-        $this->locationDao = $locationDao;
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:Location");
     }
 
     public function create(Location $location) {
-        return $this->locationDao->create($location);
+        $this->em->persist($location);
+        $this->em->flush();
+        return $location;
     }
 
-    public function delete(Location $location) {
-        $this->locationDao->delete($location);
+    public function delete($id) {
+        $location = $this->getRepository()->find($id);
+        if ($location) {
+            $this->em->remove($location);
+            $this->em->flush();
+        }
     }
 
     public function update(Location $location) {
-        return $this->locationDao->update($location);
+        $this->em->update($location);
+        $this->em->flush();
+		return $location;
     }
 
     public function findAll() {
-        return $this->locationDao->findAll($location);
+        $this->getRepository()->findAll();
     }
-
-    public function find($id) {
-        return $this->locationDao->find($id);
+    
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

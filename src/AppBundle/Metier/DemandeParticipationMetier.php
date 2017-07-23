@@ -1,35 +1,57 @@
 <?php
 
-namespace AppBundle\Metier;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+namespace AppBundle\Metier;
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\DemandeParticipation;
-use AppBundle\Dao\DemandeParticipationDao;
+
+/**
+ * Description of DemandeParticipationMetier
+ *
+ * @author fd
+ */
 
 class DemandeParticipationMetier {
+    private $em;
 
-    private $demandeParticipationDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    public function __construct(DemandeParticipationDao $demandeParticipationDao) {
-        $this->demandeParticipationDao = $demandeParticipationDao;
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:DemandeParticipation");
     }
 
     public function create(DemandeParticipation $demandeParticipation) {
-        return $this->demandeParticipationDao->create($demandeParticipation);
+        $this->em->persist($demandeParticipation);
+        $this->em->flush();
+        return $demandeParticipation;
     }
 
-    public function delete(DemandeParticipation $demandeParticipation) {
-        $this->demandeParticipationDao->delete($demandeParticipation);
+    public function delete($id) {
+        $demandeParticipation = $this->getRepository()->find($id);
+        if ($demandeParticipation) {
+            $this->em->remove($demandeParticipation);
+            $this->em->flush();
+        }
     }
 
     public function update(DemandeParticipation $demandeParticipation) {
-        return $this->demandeParticipationDao->update($demandeParticipation);
+        $this->em->update($demandeParticipation);
+        $this->em->flush();
+		return $demandeParticipation;
     }
 
     public function findAll() {
-        return $this->demandeParticipationDao->findAll($demandeParticipation);
+        $this->getRepository()->findAll();
     }
-
-    public function find($id) {
-        return $this->demandeParticipationDao->find($id);
+    
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

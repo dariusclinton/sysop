@@ -1,41 +1,57 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 namespace AppBundle\Metier;
-
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Solliciter;
-use AppBundle\Dao\SolliciterDao;
 
 /**
- * Description of solliciterMetier
+ * Description of SolliciterMetier
  *
- * @author tsafack
+ * @author fd
  */
+
 class SolliciterMetier {
-    
-    private $solliciterDao;
-    
-    public function __construct(SolliciterDao $solliciterDao) {
-        $this->solliciterDao = $solliciterDao;
+    private $em;
+
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
     }
-    
+
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:Solliciter");
+    }
+
     public function create(Solliciter $solliciter) {
-        return $this->solliciterDao->create($solliciter);
+        $this->em->persist($solliciter);
+        $this->em->flush();
+        return $solliciter;
     }
-    
+
+    public function delete($id) {
+        $solliciter = $this->getRepository()->find($id);
+        if ($solliciter) {
+            $this->em->remove($solliciter);
+            $this->em->flush();
+        }
+    }
+
     public function update(Solliciter $solliciter) {
-        return $this->solliciterDao->update($solliciter);
+        $this->em->update($solliciter);
+        $this->em->flush();
+		return $solliciter;
     }
-    
-    public function delete(Solliciter $solliciter) {
-        $this->solliciterDao->delete($solliciter);
-    }
-    
+
     public function findAll() {
-        return $this->solliciterDao->findAll();
+        $this->getRepository()->findAll();
     }
     
-    public function find($id) {
-        return $this->solliciterDao->find($id);
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

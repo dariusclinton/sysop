@@ -1,35 +1,56 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 namespace AppBundle\Metier;
-
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\AttributionProjet;
-use AppBundle\Dao\AttributionProjetDao;
 
+/**
+ * Description of AttributionProjetMetier
+ *
+ * @author fd
+ */
 class AttributionProjetMetier {
+    private $em;
 
-    private $attributionProjetDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    public function __construct(AttributionProjetDao $attributionProjetDao) {
-        $this->attributionProjetDao = $attributionProjetDao;
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:AttributionProjet");
     }
 
     public function create(AttributionProjet $attributionProjet) {
-        return $this->attributionProjetDao->create($attributionProjet);
+        $this->em->persist($attributionProjet);
+        $this->em->flush();
+        return $attributionProjet;
     }
 
-    public function delete(AttributionProjet $attributionProjet) {
-        $this->attributionProjetDao->delete($attributionProjet);
+    public function delete($id) {
+        $attributionProjet = $this->getRepository()->find($id);
+        if ($attributionProjet) {
+            $this->em->remove($attributionProjet);
+            $this->em->flush();
+        }
     }
 
     public function update(AttributionProjet $attributionProjet) {
-        return $this->attributionProjetDao->update($attributionProjet);
+        $this->em->update($attributionProjet);
+        $this->em->flush();
+		return $attributionProjet;
     }
 
     public function findAll() {
-        return $this->attributionProjetDao->findAll($attributionProjet);
+        $this->getRepository()->findAll();
     }
-
-    public function find($id) {
-        return $this->attributionProjetDao->find($id);
+    
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

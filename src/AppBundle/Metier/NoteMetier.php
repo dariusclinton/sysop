@@ -3,7 +3,7 @@
 namespace AppBundle\Metier;
 
 use AppBundle\Entity\Note;
-use AppBundle\Dao\NoteDao;
+use Doctrine\ORM\EntityManager;
 
 /**
  * Description of NoteMetier
@@ -12,29 +12,39 @@ use AppBundle\Dao\NoteDao;
  */
 class NoteMetier {
 
-    private $noteDao;
+    private $em;
     
-    public function __construct(NoteDao $noteDao) {
-        $this->noteDao = $noteDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
     }
     
     public function create(Note $note) {
-        return $this->noteDao->create($note);
+        $this->em->persist($note);
+        $this->em->flush();
     }
     
     public function update(Note $note) {
-        return $this->noteDao->update($note);
+        $this->em->merge($note);
+        $this->em->flush();
     }
     
-    public function delete(Note $note) {
-        $this->noteDao->delete($note);
+    public function delete($id) {
+        $note = $this->getRepository()->find($id);
+        if ($note) {
+            $this->em->remove($note);
+            $this->em->flush();
+        }
     }
     
     public function findAll() {
-        return $this->noteDao->findAll();
+        return $this->getRepository()->findAll();
     }
     
     public function find($id) {
-        return $this->noteDao->find($id);
+        return $this->getRepository()->find($id);
+    }
+    
+    private function getRepository() {
+        return $this->em->getRepository("AppBundle:Note");
     }
 }

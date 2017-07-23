@@ -1,35 +1,57 @@
 <?php
 
-namespace AppBundle\Metier;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+namespace AppBundle\Metier;
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\DemandeLocation;
-use AppBundle\Dao\DemandeLocationDao;
+
+/**
+ * Description of DemandeLocationMetier
+ *
+ * @author fd
+ */
 
 class DemandeLocationMetier {
+    private $em;
 
-    private $demandeLocationDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    public function __construct(DemandeLocationDao $demandeLocationDao) {
-        $this->demandeLocationDao = $demandeLocationDao;
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:DemandeLocation");
     }
 
     public function create(DemandeLocation $demandeLocation) {
-        return $this->demandeLocationDao->create($demandeLocation);
+        $this->em->persist($demandeLocation);
+        $this->em->flush();
+        return $demandeLocation;
     }
 
-    public function delete(DemandeLocation $demandeLocation) {
-        $this->demandeLocationDao->delete($demandeLocation);
+    public function delete($id) {
+        $demandeLocation = $this->getRepository()->find($id);
+        if ($demandeLocation) {
+            $this->em->remove($demandeLocation);
+            $this->em->flush();
+        }
     }
 
     public function update(DemandeLocation $demandeLocation) {
-        return $this->demandeLocationDao->update($demandeLocation);
+        $this->em->update($demandeLocation);
+        $this->em->flush();
+		return $demandeLocation;
     }
 
     public function findAll() {
-        return $this->demandeLocationDao->findAll($demandeLocation);
+        $this->getRepository()->findAll();
     }
-
-    public function find($id) {
-        return $this->demandeLocationDao->find($id);
+    
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

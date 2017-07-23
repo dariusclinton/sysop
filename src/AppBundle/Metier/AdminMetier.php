@@ -3,33 +3,43 @@
 namespace AppBundle\Metier;
 
 use AppBundle\Entity\Admin;
-use AppBundle\Dao\AdminDao;
+use Doctrine\ORM\EntityManager;
 
 class AdminMetier {
 
-    private $adminDao;
+    private $em;
 
-    public function __construct(AdminDao $adminDao) {
-        $this->adminDao = $adminDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
     }
 
     public function create(Admin $admin) {
-        return $this->adminDao->create($admin);
+        $this->em->persist($admin);
+        $this->em->flush();
     }
 
-    public function delete(Admin $admin) {
-        $this->adminDao->delete($admin);
+    public function delete($id) {
+        $admin = $this->getRepository()->find($id);
+        if ($admin) {
+            $this->remove($admin);
+            $this->flush();
+        }
     }
 
     public function update(Admin $admin) {
-        return $this->adminDao->update($admin);
+        $this->em->merge($admin);
+        $this->em->flush();
     }
 
     public function findAll() {
-        return $this->adminDao->findAll();
+        return $this->getRepository()->findAll();
     }
 
     public function find($id) {
-        return $this->adminDao->find($id);
+        return $this->getRepository()->find($id);
+    }
+    
+    private function getRepository() {
+        return $this->em->getRepository("AppBundle:Admin");
     }
 }

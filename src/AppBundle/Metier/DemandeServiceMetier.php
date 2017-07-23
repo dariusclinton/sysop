@@ -1,35 +1,57 @@
 <?php
 
-namespace AppBundle\Metier;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+namespace AppBundle\Metier;
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\DemandeService;
-use AppBundle\Dao\DemandeServiceDao;
+
+/**
+ * Description of DemandeServiceMetier
+ *
+ * @author fd
+ */
 
 class DemandeServiceMetier {
+    private $em;
 
-    private $demandeServiceDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    public function __construct(DemandeServiceDao $demandeServiceDao) {
-        $this->demandeServiceDao = $demandeServiceDao;
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:DemandeService");
     }
 
     public function create(DemandeService $demandeService) {
-        return $this->demandeServiceDao->create($demandeService);
+        $this->em->persist($demandeService);
+        $this->em->flush();
+        return $demandeService;
     }
 
-    public function delete(DemandeService $demandeService) {
-        $this->demandeServiceDao->delete($demandeService);
+    public function delete($id) {
+        $demandeService = $this->getRepository()->find($id);
+        if ($demandeService) {
+            $this->em->remove($demandeService);
+            $this->em->flush();
+        }
     }
 
     public function update(DemandeService $demandeService) {
-        return $this->demandeServiceDao->update($demandeService);
+        $this->em->update($demandeService);
+        $this->em->flush();
+		return $demandeService;
     }
 
     public function findAll() {
-        return $this->demandeServiceDao->findAll($demandeService);
+        $this->getRepository()->findAll();
     }
-
-    public function find($id) {
-        return $this->demandeServiceDao->find($id);
+    
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

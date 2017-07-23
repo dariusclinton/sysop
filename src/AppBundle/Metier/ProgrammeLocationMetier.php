@@ -1,41 +1,57 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 namespace AppBundle\Metier;
-
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\ProgrammeLocation;
-use AppBundle\Dao\ProgrammeLocationDao;
 
 /**
  * Description of ProgrammeLocationMetier
  *
- * @author tsafack
+ * @author fd
  */
+
 class ProgrammeLocationMetier {
-    
-    private $programmeLocationDao;
-    
-    public function __construct(ProgrammeLocationDao $programmeLocationDao) {
-        $this->programmeLocationDao = $programmeLocationDao;
+    private $em;
+
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
     }
-    
-    public function create(ProgrammeLocation $p) {
-        return $this->programmeLocationDao->create($p);
+
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:ProgrammeLocation");
     }
-    
-    public function update(ProgrammeLocation $p) {
-        return $this->programmeLocationDao->update($p);
+
+    public function create(ProgrammeLocation $programmeLocation) {
+        $this->em->persist($programmeLocation);
+        $this->em->flush();
+        return $programmeLocation;
     }
-    
-    public function delete(ProgrammeLocation $p) {
-        $this->programmeLocationDao->delete($p);
+
+    public function delete($id) {
+        $programmeLocation = $this->getRepository()->find($id);
+        if ($programmeLocation) {
+            $this->em->remove($programmeLocation);
+            $this->em->flush();
+        }
     }
-    
+
+    public function update(ProgrammeLocation $programmeLocation) {
+        $this->em->update($programmeLocation);
+        $this->em->flush();
+		return $programmeLocation;
+    }
+
     public function findAll() {
-        return $this->programmeLocationDao->findAll();
+        $this->getRepository()->findAll();
     }
     
-    public function find($id) {
-        return $this->programmeLocationDao->find($id);
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

@@ -1,35 +1,57 @@
 <?php
 
-namespace AppBundle\Metier;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+namespace AppBundle\Metier;
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Entreprise;
-use AppBundle\Dao\EntrepriseDao;
+
+/**
+ * Description of EntrepriseMetier
+ *
+ * @author fd
+ */
 
 class EntrepriseMetier {
+    private $em;
 
-    private $entrepriseDao;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    public function __construct(EntrepriseDao $entrepriseDao) {
-        $this->entrepriseDao = $entrepriseDao;
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:Entreprise");
     }
 
     public function create(Entreprise $entreprise) {
-        return $this->entrepriseDao->create($entreprise);
+        $this->em->persist($entreprise);
+        $this->em->flush();
+        return $entreprise;
     }
 
-    public function delete(Entreprise $entreprise) {
-        $this->entrepriseDao->delete($entreprise);
+    public function delete($id) {
+        $entreprise = $this->getRepository()->find($id);
+        if ($entreprise) {
+            $this->em->remove($entreprise);
+            $this->em->flush();
+        }
     }
 
     public function update(Entreprise $entreprise) {
-        return $this->entrepriseDao->update($entreprise);
+        $this->em->update($entreprise);
+        $this->em->flush();
+		return $entreprise;
     }
 
     public function findAll() {
-        return $this->entrepriseDao->findAll($entreprise);
+        $this->getRepository()->findAll();
     }
-
-    public function find($id) {
-        return $this->entrepriseDao->find($id);
+    
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }

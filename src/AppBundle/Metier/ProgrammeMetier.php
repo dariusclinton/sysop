@@ -1,40 +1,57 @@
 <?php
 
-namespace AppBundle\Metier;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+namespace AppBundle\Metier;
+use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Programme;
-use AppBundle\Dao\ProgrammeDao;
 
 /**
  * Description of ProgrammeMetier
  *
- * @author tsafack
+ * @author fd
  */
+
 class ProgrammeMetier {
- 
-    private $programmeDao;
-    
-    public function __construct(ProgrammeDao $programmeDao) {
-        $this->programmeDao = $programmeDao;
+    private $em;
+
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
     }
-    
+
+    public function getRepository() {
+        return $this->em->getRepository("AppBundle:Programme");
+    }
+
     public function create(Programme $programme) {
-        return $this->programmeDao->create($programme);
+        $this->em->persist($programme);
+        $this->em->flush();
+        return $programme;
     }
-    
-    public function update(Programme $programme) { 
-        return $this->programmeDao->update($programme);
+
+    public function delete($id) {
+        $programme = $this->getRepository()->find($id);
+        if ($programme) {
+            $this->em->remove($programme);
+            $this->em->flush();
+        }
     }
-    
-    public function delete(Programme $programme) {
-        $this->programmeDao->delete($programme);
+
+    public function update(Programme $programme) {
+        $this->em->update($programme);
+        $this->em->flush();
+		return $programme;
     }
-    
+
     public function findAll() {
-        return $this->programmeDao->findAll();
+        $this->getRepository()->findAll();
     }
     
-    public function find($id) {
-        return $programmeDao->find($id);
+	public function find($id) {
+        $this->getRepository()->find($id);
     }
 }
