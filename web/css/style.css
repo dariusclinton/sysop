@@ -1,0 +1,67 @@
+
+/* 
+    Created on : 1 avr. 2017, 21:47:46
+    Author     : tsafack
+*/
+
+/*
+blue: #0058a9
+green: #7ec242
+blue2: #00afe8
+*/
+
+/**
+Global
+*/
+
+body {
+    padding-top: 50px;
+}
+
+.navbar {
+    border: 1px solid #0058a9;
+}
+
+.navbar-fixed-top {
+    border-width: 0;
+}
+
+.navbar-inverse {
+    background-color: #0058a9;
+    border-color: #0058a9;
+}
+
+.navbar-header a.navbar-brand, .navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #0058a9 !important;
+    border-color: #0058a9 !important;
+}
+
+.btn-success {
+    background-color: #7ec242 !important;
+    border-color: #7ec242 !important;
+}
+
+.text-success {
+    color: #7ec242;
+}
+
+.navbar-inverse .navbar-nav>.open>a, 
+.navbar-inverse .navbar-nav>.open>a:focus, 
+.navbar-inverse .navbar-nav>.open>a:hover  {
+    background-color: #7ec242;
+}
+
+.page-header {
+    border-bottom: 2px solid #7ec242;
+}
+
+thead, thead a {
+    color: #7ec242;
+    /*background-color: #7ec242;*/
+    /*border-color: #7ec242;*/
+}
+
