@@ -33,9 +33,6 @@ services:
     app.note.metier:
         class: AppBundle\Metier\NoteMetier
         arguments: ["@doctrine.orm.entity_manager"]
-    app.programme.metier:
-        class: AppBundle\Metier\ProgrammeMetier
-        arguments: ["@doctrine.orm.entity_manager"]
     app.programmeLocation.metier:
         class: AppBundle\Metier\ProgrammeLocationMetier
         arguments: ["@doctrine.orm.entity_manager"]
