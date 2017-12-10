@@ -52,6 +52,11 @@ class Projet
     private $demandesParticipation;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ville")
+     */
+    private $villes;
+
+    /**
      * Get id
      *
      * @return int
@@ -207,5 +212,39 @@ class Projet
     public function getDemandesParticipation()
     {
         return $this->demandesParticipation;
+    }
+
+    /**
+     * Add ville
+     *
+     * @param \AppBundle\Entity\Ville $ville
+     *
+     * @return Projet
+     */
+    public function addVille(\AppBundle\Entity\Ville $ville)
+    {
+        $this->villes[] = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Remove ville
+     *
+     * @param \AppBundle\Entity\Ville $ville
+     */
+    public function removeVille(\AppBundle\Entity\Ville $ville)
+    {
+        $this->villes->removeElement($ville);
+    }
+
+    /**
+     * Get villes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVilles()
+    {
+        return $this->villes;
     }
 }
