@@ -48,3 +48,11 @@ services:
     app.utilisateur.metier:
         class: AppBundle\Metier\UtilisateurMetier
         arguments: ["@doctrine.orm.entity_manager"]
+    
+
+    admin.admin:
+        class: AppBundle\Admin\Admin
+        arguments: [~, AppBundle\Entity\Admin, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "User", label: Admin, show_mosaic_button: true }
+        public: true

@@ -51,6 +51,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
@@ -101,4 +103,22 @@ fos_rest:
 #        default_engine: twig
 #    routing_loader:
 #        default_format: json
-        
+
+#Sonata
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+    
+sonata_admin:
+    title: 'Admin Sysop'
+    title_logo: bundles/sonataadmin/logo_title.png
+
+sonata_dashboard:
+    default_container: sonata.dashboard.block.container
+    # Entity Classes
+    class:
+        dashboard: Application\Sonata\DashboardBundle\Entity\Dashboard
+        block:     Application\Sonata\DashboardBundle\Entity\Block
