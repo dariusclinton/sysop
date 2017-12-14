@@ -1,0 +1,14 @@
+
+services:
+    admin.admin:
+        class: AppBundle\Admin\Admin
+        arguments: [~, AppBundle\Entity\Admin, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "User", label: Admin, show_mosaic_button: true }
+        public: true
+    admin.specialite:
+        class: AppBundle\Admin\Specialite
+        arguments: [~, AppBundle\Entity\Specialite, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Other", label: Specialite, show_mosaic_button: true }
+        public: true
