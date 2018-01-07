@@ -40,6 +40,6 @@ class AdminMetier {
     }
     
     private function getRepository() {
-        return $this->em->getRepository("AppBundle:Admin");
+        return $this->em->getRepository("UserBundle:Admin");
     }
 }

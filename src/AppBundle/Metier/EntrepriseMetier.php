@@ -24,7 +24,7 @@ class EntrepriseMetier {
     }
 
     public function getRepository() {
-        return $this->em->getRepository("AppBundle:Entreprise");
+        return $this->em->getRepository("UserBundle:Entreprise");
     }
 
     public function create(Entreprise $entreprise) {

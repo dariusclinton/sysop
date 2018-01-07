@@ -24,7 +24,7 @@ class TravailleurMetier {
     }
 
     public function getRepository() {
-        return $this->em->getRepository("AppBundle:Travailleur");
+        return $this->em->getRepository("UserBundle:Travailleur");
     }
 
     public function create(Travailleur $travailleur) {
