@@ -42,7 +42,7 @@ class Travailleur extends Utilisateur
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfosTravailleur")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $infosTravailleur;
 
@@ -84,40 +84,6 @@ class Travailleur extends Utilisateur
     public function getNotes()
     {
         return $this->notes;
-    }
-
-    /**
-     * Add programme
-     *
-     * @param \AppBundle\Entity\Programme $programme
-     *
-     * @return Travailleur
-     */
-    public function addProgramme(\AppBundle\Entity\Programme $programme)
-    {
-        $this->programmes[] = $programme;
-
-        return $this;
-    }
-
-    /**
-     * Remove programme
-     *
-     * @param \AppBundle\Entity\Programme $programme
-     */
-    public function removeProgramme(\AppBundle\Entity\Programme $programme)
-    {
-        $this->programmes->removeElement($programme);
-    }
-
-    /**
-     * Get programmes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProgrammes()
-    {
-        return $this->programmes;
     }
 
     /**

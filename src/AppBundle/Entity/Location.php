@@ -31,7 +31,7 @@ class Location
     /**
      * @var int
      *
-     * @ORM\Column(name="montant", type="integer")
+     * @ORM\Column(name="montant", type="integer", nullable=true)
      */
     private $montant;
 
@@ -168,5 +168,10 @@ class Location
     public function getProgrammesLocation()
     {
         return $this->programmesLocation;
+    }
+
+    public function __toString()
+    {
+        return $this->getLibelle();
     }
 }

@@ -7,33 +7,38 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class Admin extends AbstractAdmin
+class FileAdmin extends AbstractAdmin
 {
 
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('email', 'email')
-            ->add('username', 'text')
-            ->add('password', 'password');
+            ->add('file', 'file', array('required' => true));
+    }
+
+    public function prePersist($file) {
+        $this->saveFile($file);
+    }
+
+    public function preUpdate($file) {
+        $this->saveFile($file);
+    }
+
+    public function saveFile($file) {
+        $basepath = $this->getRequest()->getBasePath();
+        $file->upload($basepath);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('email')
-            ->add('username')
-            ->add('enabled');
+            ->add('filename');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('email')
-            ->addIdentifier('username')
-            ->add('enabled', null, array(
-                'editable' => true
-            ))
+            ->addIdentifier('filename')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -46,8 +51,6 @@ class Admin extends AbstractAdmin
     protected function configureShownFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('email')
-            ->addIdentifier('username')
-            ->addIdentifier('enabled');
+            ->addIdentifier('filename');
     }
 }

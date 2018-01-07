@@ -247,4 +247,9 @@ class Projet
     {
         return $this->villes;
     }
+
+    public function __toString()
+    {
+        return $this->getLibelle();
+    }
 }

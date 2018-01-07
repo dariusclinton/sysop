@@ -43,10 +43,16 @@ class DemandeService
     private $date;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
-    * @ORM\JoinColumn(nullable=false)
-    */
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $utilisateur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\File", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $fichier;
 
     public function __construct()
     {
@@ -158,5 +164,29 @@ class DemandeService
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Set fichier
+     *
+     * @param \AppBundle\Entity\File $fichier
+     *
+     * @return DemandeService
+     */
+    public function setFichier(\AppBundle\Entity\File $fichier = null)
+    {
+        $this->fichier = $fichier;
+
+        return $this;
+    }
+
+    /**
+     * Get fichier
+     *
+     * @return \AppBundle\Entity\File
+     */
+    public function getFichier()
+    {
+        return $this->fichier;
     }
 }
