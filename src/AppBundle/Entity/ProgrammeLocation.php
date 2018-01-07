@@ -230,4 +230,10 @@ class ProgrammeLocation
     {
         return $this->location;
     }
+
+    public function __toString()
+    {
+        return $this->getLocation()->getLibelle() .' | '. $this->getJour() .' de '. $this->getHeureDebut()->format('H:m')
+            .' à '. $this->getHeureFin()->format('H:m');
+    }
 }

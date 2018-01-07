@@ -53,6 +53,17 @@ abstract class Utilisateur extends BaseUser
     */
     private $locations;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Note", mappedBy="utilisateur")
+     */
+    private $notes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $ville;
+
     public function __construct()
     {
         parent::__construct();
@@ -251,5 +262,63 @@ abstract class Utilisateur extends BaseUser
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Add note
+     *
+     * @param \AppBundle\Entity\Note $note
+     *
+     * @return Utilisateur
+     */
+    public function addNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \AppBundle\Entity\Note $note
+     */
+    public function removeNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes->removeElement($note);
+    }
+
+    /**
+     * Get notes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \AppBundle\Entity\Ville $ville
+     *
+     * @return Utilisateur
+     */
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return \AppBundle\Entity\Ville
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

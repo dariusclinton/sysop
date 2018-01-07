@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Programme
+ * Evenement
  *
- * @ORM\Table(name="programme")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProgrammeRepository")
+ * @ORM\Table(name="evenement")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EvenementRepository")
  */
-class Programme
+class Evenement
 {
     /**
      * @var int
@@ -22,43 +22,36 @@ class Programme
     private $id;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="jour", type="string", length=255)
+     * @ORM\Column(name="jour", type="date")
      */
     private $jour;
 
     /**
-     * @var time
+     * @var \DateTime
      *
      * @ORM\Column(name="heureDebut", type="time")
      */
     private $heureDebut;
 
     /**
-     * @var time
+     * @var \DateTime
      *
      * @ORM\Column(name="heureFin", type="time")
      */
     private $heureFin;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Travailleur")
-    * @ORM\JoinColumn(nullable=false)
-    */
-    private $travailleur;
-    
-
-    public function __construct()
-    {
-        $this->heureDebut = new \DateTime();
-        $this->heureFin = new \DateTime();
-    }
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Agenda")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $agenda;
 
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -68,9 +61,9 @@ class Programme
     /**
      * Set jour
      *
-     * @param string $jour
+     * @param \DateTime $jour
      *
-     * @return Programme
+     * @return Evenement
      */
     public function setJour($jour)
     {
@@ -82,7 +75,7 @@ class Programme
     /**
      * Get jour
      *
-     * @return string
+     * @return \DateTime
      */
     public function getJour()
     {
@@ -94,7 +87,7 @@ class Programme
      *
      * @param \DateTime $heureDebut
      *
-     * @return Programme
+     * @return Evenement
      */
     public function setHeureDebut($heureDebut)
     {
@@ -118,7 +111,7 @@ class Programme
      *
      * @param \DateTime $heureFin
      *
-     * @return Programme
+     * @return Evenement
      */
     public function setHeureFin($heureFin)
     {
@@ -138,26 +131,26 @@ class Programme
     }
 
     /**
-     * Set travailleur
+     * Set agenda
      *
-     * @param \AppBundle\Entity\Travailleur $travailleur
+     * @param \AppBundle\Entity\Agenda $agenda
      *
-     * @return Programme
+     * @return Evenement
      */
-    public function setTravailleur(\AppBundle\Entity\Travailleur $travailleur)
+    public function setAgenda(\AppBundle\Entity\Agenda $agenda)
     {
-        $this->travailleur = $travailleur;
+        $this->agenda = $agenda;
 
         return $this;
     }
 
     /**
-     * Get travailleur
+     * Get agenda
      *
-     * @return \AppBundle\Entity\Travailleur
+     * @return \AppBundle\Entity\Agenda
      */
-    public function getTravailleur()
+    public function getAgenda()
     {
-        return $this->travailleur;
+        return $this->agenda;
     }
 }

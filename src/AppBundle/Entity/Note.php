@@ -43,6 +43,13 @@ class Note
 
 
     /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $utilisateur;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -122,5 +129,29 @@ class Note
     public function getTravailleur()
     {
         return $this->travailleur;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \AppBundle\Entity\Utilisateur $utilisateur
+     *
+     * @return Note
+     */
+    public function setUtilisateur(\AppBundle\Entity\Utilisateur $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \AppBundle\Entity\Utilisateur
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

@@ -26,11 +26,6 @@ class Travailleur extends Utilisateur
     private $notes;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Programme", mappedBy="travailleur", cascade={"persist","remove"})
-    */
-    private $programmes;
-
-    /**
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AttributionProjet", mappedBy="travailleur")
     */
     private $attributionsProjet;
@@ -44,6 +39,12 @@ class Travailleur extends Utilisateur
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solliciter", mappedBy="travailleur")
     */
     private $sollicites;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfosTravailleur")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $infosTravailleur;
 
     public function __construct()
     {
@@ -83,40 +84,6 @@ class Travailleur extends Utilisateur
     public function getNotes()
     {
         return $this->notes;
-    }
-
-    /**
-     * Add programme
-     *
-     * @param \AppBundle\Entity\Programme $programme
-     *
-     * @return Travailleur
-     */
-    public function addProgramme(\AppBundle\Entity\Programme $programme)
-    {
-        $this->programmes[] = $programme;
-
-        return $this;
-    }
-
-    /**
-     * Remove programme
-     *
-     * @param \AppBundle\Entity\Programme $programme
-     */
-    public function removeProgramme(\AppBundle\Entity\Programme $programme)
-    {
-        $this->programmes->removeElement($programme);
-    }
-
-    /**
-     * Get programmes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProgrammes()
-    {
-        return $this->programmes;
     }
 
     /**
@@ -219,5 +186,29 @@ class Travailleur extends Utilisateur
     public function getSollicites()
     {
         return $this->sollicites;
+    }
+
+    /**
+     * Set infosTravailleur
+     *
+     * @param \AppBundle\Entity\InfosTravailleur $infosTravailleur
+     *
+     * @return Travailleur
+     */
+    public function setInfosTravailleur(\AppBundle\Entity\InfosTravailleur $infosTravailleur)
+    {
+        $this->infosTravailleur = $infosTravailleur;
+
+        return $this;
+    }
+
+    /**
+     * Get infosTravailleur
+     *
+     * @return \AppBundle\Entity\InfosTravailleur
+     */
+    public function getInfosTravailleur()
+    {
+        return $this->infosTravailleur;
     }
 }
