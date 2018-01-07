@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class RegistrationTravailleurFormType extends AbstractType
+class RegistrationEntrepriseFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -13,12 +13,12 @@ class RegistrationTravailleurFormType extends AbstractType
 
     public function getParent()
     {
-        return 'AppBundle\Form\Type\RegistrationType';
+        return 'UserBundle\Form\Type\RegistrationType';
     }
 
     public function getBlockPrefix()
     {
-        return 'travailleur_registration';
+        return 'entreprise_registration';
     }
 
     // For Symfony 2.x
