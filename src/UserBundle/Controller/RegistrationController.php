@@ -9,13 +9,13 @@ class RegistrationController extends Controller
 {
 
     /**
-    * @Route("/register/admin", name="admin_registration")
-    */
+     * @Route("/register/admin", name="admin_registration")
+     */
     public function registerAdminAction()
     {
         return $this->container
-                    ->get('pugx_multi_user.registration_manager')
-                    ->register('AppBundle\Entity\Admin');
+            ->get('pugx_multi_user.registration_manager')
+            ->register('AppBundle\Entity\Admin');
     }
 
     /**
@@ -24,8 +24,8 @@ class RegistrationController extends Controller
     public function registerEntrepriseAction()
     {
         return $this->container
-                    ->get('pugx_multi_user.registration_manager')
-                    ->register('AppBundle\Entity\Entreprise');
+            ->get('pugx_multi_user.registration_manager')
+            ->register('AppBundle\Entity\Entreprise');
     }
 
     /**
@@ -34,7 +34,7 @@ class RegistrationController extends Controller
     public function registerTravailleurAction()
     {
         return $this->container
-                    ->get('pugx_multi_user.registration_manager')
-                    ->register('AppBundle\Entity\Travailleur');
+            ->get('pugx_multi_user.registration_manager')
+            ->register('AppBundle\Entity\Travailleur');
     }
 }
