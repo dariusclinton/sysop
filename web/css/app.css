@@ -1,0 +1,213 @@
+/**
+ *	@author: Darius Clinton Tsafack;
+ *	date: 10/12/2017;
+ */
+
+ body {
+
+ }
+
+/**
+NAV
+==============================*/
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-default {
+	background-color: #ffffff;
+	box-shadow: 0 0 4px 0 rgba(0,0,0,.08), 0 2px 4px 0 rgba(0,0,0,.12);
+}
+
+
+
+/**
+HEADER
+==============================*/
+
+#header {
+	border-bottom: 1px solid #eee;
+}
+
+ #header .jumbotron {
+ 	height: 500px;
+	background-image: url('../img/bg-header.jpg');
+	background-size: 100% 100%;
+ }
+
+ #header2 .jumbotron {
+	height: 300px;
+	color: #555 !important;
+ }
+
+ .header-search {
+ 	margin-top: 60px;
+ }
+
+ .header-search h1 {
+ 	color: #fff;
+ }
+
+ .header-info-summary h3 {
+ 	margin-top: 0;
+ 	font-weight: bold;
+ }
+
+
+
+
+/*
+==========================
+			HOME
+==========================
+*/
+
+/**
+SPECIALITES
+==============================*/
+
+#home_content .specialites {
+	margin-top: 100px;
+}
+
+#home_content .specialites h1 {
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+#home_content .specialites h1 hr {
+	border: 2px solid #337ab7;
+	width: 100px;
+}
+
+#home_content .specialites-table {
+	margin: 0 auto;
+	margin-bottom: 40px;
+
+}
+
+
+#home_content .specialites-table td a {
+	height: 150px;
+	width: 250px;
+	display: table-cell;
+	border: 2px solid #337ab7;
+	border-right: 0;
+
+	transition: 1s;
+	text-align: center;
+	vertical-align: middle;
+	text-transform: uppercase;
+}
+
+#home_content .specialites-table tr td:last-child a {
+	border-right: 2px solid #337ab7;
+}
+
+#home_content .specialites-table td a:hover {
+	background-color: #337ab7;
+	text-decoration: none;
+	color: #fff;
+}
+
+#home_content .specialites-table td a h3 {
+	margin-bottom: 0;
+}
+
+#home_content .specialites-table tr td a {
+	border-bottom: 0;
+}
+
+#home_content .specialites-table tr:last-child td a {
+	border-bottom: 2px solid #337ab7	;
+}
+
+
+
+/**
+OUR SERVICES
+==============================*/
+#home_content .our-service {
+	margin-top: 50px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+#home_content .our-service h1 {
+	text-align: center;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+#home_content .our-service h1 hr {
+	border: 2px solid #337ab7;
+	width: 100px;
+}
+
+/**
+TESTIMONIALS
+==============================*/
+
+
+#home_content .testimonial h1 {
+	text-align: center;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+#home_content .testimonial h1 hr {
+	border: 2px solid #337ab7;
+	width: 100px;
+}
+
+#home_content .testimonial {
+	margin-top: 50px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+	background-color: #eee;
+}
+
+#home_content .testimonial-item {
+	margin-bottom: 50px;
+}
+
+#home_content .testimonial-item h3 {
+	margin-top: 0;
+	text-transform: uppercase;
+}
+
+
+/*
+==========================
+			COMMENT CA MARCHE
+==========================
+*/
+
+#comment_ca_marche_content {
+
+}
+
+
+
+
+/**
+FOOTER
+==============================*/
+
+#footer {
+	margin-top: 50px;
+	background-color: #161e2c;
+	color: #fff;
+}
+
+.footer-item h3 {
+	margin-bottom: 50px;
+}
+
+.footer-item h3 hr {
+	border: 2px solid #337ab7;
+	width: 50px;
+	margin-left: 0;
+}

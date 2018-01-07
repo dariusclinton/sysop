@@ -1,8 +1,287 @@
-{% extends "::base.html.twig" %}
+{% extends "AppBundle::layout.html.twig" %}
 
 
-{% block body %}
+{% block header %}
+	{# header #}
+  	<div id="header">
+		<div class="jumbotron">
+	  		<div class="header-search col-md-6 col-md-offset-3 text-center">
+	  			<h1>Trouvez un travailleur maintenant</h1>
+			    <form action="{{ path('app_rechercher_tavailleur') }}">
+			    	<div class="input-group">
+				      <input type="text" name="keyword" class="form-control input-lg" placeholder="Informatique, BTP, Electronique...">
+				      <span class="input-group-btn">
+				        <button class="btn btn-primary btn-lg" type="submit">Rechercher</button>
+				      </span>
+				    </div><!-- /input-group -->
+			    </form>
+	  		</div>
+  		</div>
+  		<div class="container header-info">
+  			<div class="col-md-4 header-info-summary">
+  				<div class="row">
+  					<div class="col-md-2">
+	  					<i class="fa fa-calendar fa-3x"></i>
+	  				</div>
+	  				<div class="col-md-10">
+	  					<h3>Lorem ipsum dolor sit</h3>
+	  					<p>Création, maintenance et gestion des emplois de temps pour toutes sociales</p>
+	  				</div>
+  				</div>
+  			</div>
+  			<div class="col-md-4 header-info-summary">
+  				<div class="row">
+  					<div class="col-md-2">
+	  					<i class="fa fa-money fa-3x"></i>
+	  				</div>
+	  				<div class="col-md-10">
+	  					<h3>Lorem ipsum dolor sit</h3>
+	  					<p>Optimiser les actions des hommes, rentabiliser les actions des travailleurs</p>
+	  				</div>
+  				</div>
+  			</div>
+  			<div class="col-md-4 header-info-summary">
+  				<div class="row">
+  					<div class="col-md-2">
+	  					<i class="fa fa-hourglass-2 fa-3x"></i>
+	  				</div>
+	  				<div class="col-md-10">
+	  					<h3>Lorem ipsum dolor sit</h3>
+	  					<p>Faciliter la vie des travailleurs, faciliter l'innovation et la croissance</p>
+	  					<p></p>
+	  				</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>	
+  	{# end header #}
+{% endblock header %}
 
-    Helloo!!
+{% block content %}
 
-{% endblock %}
+  	<div id="home_content">
+
+  		{# specialites #}
+  		<div class="specialites text-center">
+  			<div class="container">
+	  			<h1>Nos différentes spécialités <hr/></h1>
+	  			<table class="specialites-table" cellpadding="10">
+	  				<tr>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-pie-chart"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-print"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-recycle"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-rocket"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  				</tr>
+	  				<tr>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-car"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-sitemap"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-tasks"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-ticket"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  				</tr>
+	  				<tr>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-paypal"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-credit-card"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-wifi"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  					<td>
+	  						<a href="#">
+	  							<h3><i class="fa fa-tty"></i></h3>
+		  						<span>Informatique</span>
+	  						</a>
+	  					</td>
+	  				</tr>
+	  			</table>
+
+	  			<div class="text-center"> 
+	  				<a href="#">Plus de spécialités &raquo;</a>
+	  			</div>
+  			</div>
+	  	</div>
+	  	{# end specialites #}
+
+	  	{# our service #}
+	  	<div class="our-service">
+	  		<div class="container">
+	  			<h1>Notre service <hr/></h1>
+	  			<div class="row">
+	  				<div class="col-md-6">
+	  					<img src="{{ asset('img/img-1.jpg') }}" class="img-responsive img-thumbnail"/>
+	  				</div>
+	  				<div class="col-md-6">
+	  					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						  <div class="panel panel-primary">
+						    <div class="panel-heading" role="tab" id="headingOne">
+						      <h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          Collapsible Group Item #1
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						      <div class="panel-body">
+						        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						      </div>
+						    </div>
+						  </div>
+						  <div class="panel panel-primary">
+						    <div class="panel-heading" role="tab" id="headingTwo">
+						      <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						          Collapsible Group Item #2
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						      <div class="panel-body">
+						        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						      </div>
+						    </div>
+						  </div>
+						  <div class="panel panel-primary">
+						    <div class="panel-heading" role="tab" id="headingThree">
+						      <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						          Collapsible Group Item #3
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						      <div class="panel-body">
+						        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						      </div>
+						    </div>
+						  </div>
+						</div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	{# end our services #}
+
+
+	  	{# testimonial #}
+	  	<div class="testimonial">
+	  		<div class="container">
+	  			<h1>Témoignages <hr/></h1>
+	  			<div class="row">
+	  				<div class="testimonial-item col-md-6">
+	  					<div class="row">
+	  						<div class="col-md-2">
+	  							<img src="{{ asset('img/img-3.jpg') }}" 
+	  								class="img-responsive img-circle"/>
+	  						</div>
+	  						<div class="col-md-10">
+	  							<h3>Lorem</h3>
+	  							<h4>Lorem ipsum</h4>
+	  							<p style="text-align: justify">
+	  								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
+	  							</p>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="testimonial-item col-md-6">
+	  					<div class="row">
+	  						<div class="col-md-2">
+	  							<img src="{{ asset('img/img-3.jpg') }}" 
+	  								class="img-responsive img-circle"/>
+	  						</div>
+	  						<div class="col-md-10">
+	  							<h3>Lorem</h3>
+	  							<h4>Lorem ipsum</h4>
+	  							<p>
+	  								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
+	  							</p>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="testimonial-item col-md-6">
+	  					<div class="row">
+	  						<div class="col-md-2">
+	  							<img src="{{ asset('img/img-3.jpg') }}" 
+	  								class="img-responsive img-circle"/>
+	  						</div>
+	  						<div class="col-md-10">
+	  							<h3>Lorem</h3>
+	  							<h4>Lorem ipsum</h4>
+	  							<p>
+	  								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
+	  							</p>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="testimonial-item col-md-6">
+	  					<div class="row">
+	  						<div class="col-md-2">
+	  							<img src="{{ asset('img/img-3.jpg') }}" 
+	  								class="img-responsive img-circle"/>
+	  						</div>
+	  						<div class="col-md-10">
+	  							<h3>Lorem</h3>
+	  							<h4>Lorem ipsum</h4>
+	  							<p>
+	  								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
+	  							</p>
+	  						</div>
+	  					</div>
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	{# testimonial #}
+
+  	</div>
+{% endblock content %}
