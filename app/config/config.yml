@@ -3,8 +3,13 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@AppBundle/Resources/config/services.yml" }
-    - { resource: "@AppBundle/Resources/config/sonata_services.yml" }
     - { resource: "@AppBundle/Resources/config/config.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata/utilisateur.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata/info_travailleur.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata/location.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata/projet.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata/service.yml" }
+    - { resource: "@AppBundle/Resources/config/sonata/param_base.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
