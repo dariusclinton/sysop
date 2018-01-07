@@ -1,0 +1,25 @@
+services:
+    admin.infosTravailleur:
+        class: AppBundle\Admin\GestionInfoTravailleur\InfosTravailleurAdmin
+        arguments: [~, AppBundle\Entity\InfosTravailleur, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: InfosTravailleur, show_mosaic_button: true }
+        public: true
+    admin.agenda:
+        class: AppBundle\Admin\GestionInfoTravailleur\AgendaAdmin
+        arguments: [~, AppBundle\Entity\Agenda, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: Agenda, show_mosaic_button: true }
+        public: true
+    admin.experience:
+        class: AppBundle\Admin\GestionInfoTravailleur\ExperienceAdmin
+        arguments: [~, AppBundle\Entity\Experience, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: Experience, show_mosaic_button: true }
+        public: true
+    admin.diplome:
+        class: AppBundle\Admin\GestionInfoTravailleur\DiplomeAdmin
+        arguments: [~, AppBundle\Entity\Diplome, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: Diplome, show_mosaic_button: true }
+        public: true

@@ -1,3 +1,15 @@
 user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Default:index }
+
+admin_registration:
+    path:  /register/admin
+    defaults: { _controller: UserBundle:RegistrationAdmin:register }
+
+travailleur_registration:
+    path:  /register/travailleur
+    defaults: { _controller: UserBundle:RegistrationTravailleur:register }
+
+entreprise_registration:
+    path:  /register/entreprise
+    defaults: { _controller: UserBundle:RegistrationEntreprise:register }

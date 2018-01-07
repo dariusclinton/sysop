@@ -29,7 +29,7 @@ class AttributionProjet
     private $date;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Travailleur")
+    * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Travailleur")
     * @ORM\JoinColumn(nullable=false)
     */
     private $travailleur;

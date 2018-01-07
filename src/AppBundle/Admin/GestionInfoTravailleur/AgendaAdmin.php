@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use AppBundle\Entity\Evenements;
+use AppBundle\Entity\Evenement;
 use AppBundle\Entity\InfosTravailleur;
 
 class AgendaAdmin extends AbstractAdmin

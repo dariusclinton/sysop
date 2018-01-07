@@ -2,7 +2,7 @@
 
 namespace AppBundle\Metier;
 
-use AppBundle\Entity\Admin;
+use UserBundle\Entity\Admin;
 use Doctrine\ORM\EntityManager;
 
 class AdminMetier {

@@ -2,13 +2,13 @@
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AppBundle\Entity\Utilisateur
+    user_class: UserBundle\Entity\Utilisateur
     service:
         mailer: fos_user.mailer.twig_swift
         user_manager: pugx_user_manager
     registration:
         form:
-            type: AppBundle\Form\Type\RegistrationType
+            type: UserBundle\Form\Type\RegistrationType
         confirmation:
             enabled: true
             template:   FOSUserBundle:Registration:email.txt.twig
@@ -29,11 +29,11 @@ fos_user:
 pugx_multi_user:
   users:
     admin:
-        entity: 
-          class: AppBundle\Entity\Admin
-#          factory: 
+        entity:
+          class: UserBundle\Entity\Admin
+#          factory:
         registration:
-          form: 
+          form:
             type: UserBundle\Form\Type\RegistrationAdminFormType
             name: fos_user_registration_form
             validation_groups:  [Registration, Default]
@@ -42,24 +42,24 @@ pugx_multi_user:
           form:
             type: UserBundle\Form\Type\ProfileAdminFormType
             name: fos_user_profile_form
-            validation_groups:  [Profile, Default] 
+            validation_groups:  [Profile, Default]
     travailleur:
-        entity: 
-          class: AppBundle\Entity\Travailleur
-        registration:
-          form: 
-            type: UserBundle\Form\Type\RegistrationTravailleurFormType
-          template: UserBundle:Registration:travailleur.form.html.twig
-        profile:
-          form: 
-            type: UserBundle\Form\Type\ProfileTravailleurFormType
+      entity:
+        class: UserBundle\Entity\Travailleur
+      registration:
+        form:
+          type: UserBundle\Form\Type\RegistrationTravailleurFormType
+        template: UserBundle:Registration:travailleur.form.html.twig
+      profile:
+        form:
+          type: UserBundle\Form\Type\ProfileTravailleurFormType
     entreprise:
-        entity: 
-          class: AppBundle\Entity\Entreprise
+        entity:
+          class: UserBundle\Entity\Entreprise
         registration:
-          form: 
+          form:
             type: UserBundle\Form\Type\RegistrationEntrepriseFormType
           template: UserBundle:Registration:entreprise.form.html.twig
         profile:
-          form: 
+          form:
             type: UserBundle\Form\Type\ProfileEntrepriseFormType

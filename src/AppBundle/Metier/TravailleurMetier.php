@@ -8,7 +8,7 @@
 
 namespace AppBundle\Metier;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Travailleur;
+use UserBundle\Entity\Travailleur;
 
 /**
  * Description of TravailleurMetier

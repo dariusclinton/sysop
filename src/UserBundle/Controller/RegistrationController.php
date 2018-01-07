@@ -9,7 +9,7 @@ class RegistrationController extends Controller
 {
 
     /**
-     * @Route("/register/admin", name="admin_registration")
+     * @Route("/registerr/admin", name="admin_registration")
      */
     public function registerAdminAction()
     {
@@ -19,7 +19,7 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @Route("/register/entreprise", name="entreprise_registration")
+     * @Route("/registerr/entreprise", name="entreprise_registration")
      */
     public function registerEntrepriseAction()
     {
@@ -29,7 +29,7 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @Route("/register/travailleur", name="travailleur_registration")
+     * @Route("/registerr/travailleur", name="travailleur_registration")
      */
     public function registerTravailleurAction()
     {

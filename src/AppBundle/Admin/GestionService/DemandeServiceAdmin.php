@@ -2,7 +2,7 @@
 
 namespace AppBundle\Admin\GestionService;
 
-use AppBundle\Entity\Utilisateur;
+use UserBundle\Entity\Utilisateur;
 use AppBundle\Form\FileType;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;

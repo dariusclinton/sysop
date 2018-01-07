@@ -3,8 +3,8 @@
 namespace AppBundle\Admin\GestionService;
 
 use AppBundle\Entity\Projet;
-use AppBundle\Entity\Travailleur;
-use AppBundle\Entity\Utilisateur;
+use UserBundle\Entity\Travailleur;
+use UserBundle\Entity\Utilisateur;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;

@@ -1,19 +1,19 @@
 services:
     admin.admin:
         class: AppBundle\Admin\GestionUtilisateur\Admin
-        arguments: [~, AppBundle\Entity\Admin, ~]
+        arguments: [~, UserBundle\Entity\Admin, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Utilisateurs", label: Admin, show_mosaic_button: true }
         public: true
     admin.travailleur:
         class: AppBundle\Admin\GestionUtilisateur\TravailleurAdmin
-        arguments: [~, AppBundle\Entity\Travailleur, ~]
+        arguments: [~, UserBundle\Entity\Travailleur, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Utilisateurs", label: Travailleur, show_mosaic_button: true }
         public: true
     admin.entreprise:
         class: AppBundle\Admin\GestionUtilisateur\EntrepriseAdmin
-        arguments: [~, AppBundle\Entity\Entreprise, ~]
+        arguments: [~, UserBundle\Entity\Entreprise, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Utilisateurs", label: Entreprise, show_mosaic_button: true }
         public: true

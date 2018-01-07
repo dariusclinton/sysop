@@ -3,9 +3,7 @@
 namespace AppBundle\Admin\GestionLocation;
 
 use AppBundle\Entity\ProgrammeLocation;
-use AppBundle\Entity\Projet;
-use AppBundle\Entity\Travailleur;
-use AppBundle\Entity\Utilisateur;
+use UserBundle\Entity\Utilisateur;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -13,7 +11,6 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Form\Type\BooleanType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class DemandeLocationAdmin extends AbstractAdmin

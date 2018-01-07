@@ -2,7 +2,7 @@
 
 namespace AppBundle\Admin\GestionProjet;
 
-use AppBundle\Entity\Utilisateur;
+use UserBundle\Entity\Utilisateur;
 use AppBundle\Entity\Ville;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;

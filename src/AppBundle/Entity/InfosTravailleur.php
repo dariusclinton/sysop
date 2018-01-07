@@ -28,7 +28,7 @@ class InfosTravailleur
     private $agenda;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Travailleur", mappedBy="travailleur")
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Travailleur", mappedBy="travailleur")
      * @ORM\JoinColumn(nullable=false)
      */
     private $travailleur;

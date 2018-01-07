@@ -15,7 +15,7 @@ class TravailleurRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->getEntityManager()->createQuery('
             SELECT t
-            FROM AppBundle:Travailleur t
+            FROM UserBundle:Travailleur t
             LEFT JOIN t.ville v
             LEFT JOIN v.pays p
             LEFT JOIN t.infosTravailleur it

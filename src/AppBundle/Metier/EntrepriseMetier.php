@@ -8,7 +8,7 @@
 
 namespace AppBundle\Metier;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Entreprise;
+use UserBundle\Entity\Entreprise;
 
 /**
  * Description of EntrepriseMetier

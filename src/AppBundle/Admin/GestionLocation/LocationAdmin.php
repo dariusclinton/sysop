@@ -2,7 +2,7 @@
 
 namespace AppBundle\Admin\GestionLocation;
 
-use AppBundle\Entity\Utilisateur;
+use UserBundle\Entity\Utilisateur;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;

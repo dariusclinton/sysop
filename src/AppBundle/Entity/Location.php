@@ -36,7 +36,7 @@ class Location
     private $montant;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
+    * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Utilisateur")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
