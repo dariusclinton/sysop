@@ -1,44 +1,39 @@
 <?php
 
-namespace AppBundle\Admin;
+namespace AppBundle\Admin\GestionInfoTravailleur;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AppBundle\Entity\InfosTravailleur;
 
-class FileAdmin extends AbstractAdmin
+class DiplomeAdmin extends AbstractAdmin
 {
+
 
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('file', 'file', array('required' => true));
-    }
-
-    public function prePersist($file) {
-        $this->saveFile($file);
-    }
-
-    public function preUpdate($file) {
-        $this->saveFile($file);
-    }
-
-    public function saveFile($file) {
-        $basepath = $this->getRequest()->getBasePath();
-        $file->upload($basepath);
+            ->add('nom')
+            ->add('infosTravailleur', EntityType::class, array(
+                'class' => InfosTravailleur::class,
+                'choice_label' => 'id',
+            ));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('filename');
+             ->add('nom');
+            
     }
 
-    protected function configureListFields(ListMapper $listMapper)
+      protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('filename')
+            ->add('nom')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -51,6 +46,10 @@ class FileAdmin extends AbstractAdmin
     protected function configureShownFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('filename');
+             ->add('nom');
     }
+
+
+
+    
 }

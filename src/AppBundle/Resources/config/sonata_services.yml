@@ -19,18 +19,35 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Utilisateurs", label: Entreprise, show_mosaic_button: true }
         public: true
 
-    admin.specialite:
-        class: AppBundle\Admin\Specialite
-        arguments: [~, AppBundle\Entity\Specialite, ~]
+
+
+    admin.infosTravailleur:
+        class: AppBundle\Admin\GestionInfoTravailleur\InfosTravailleurAdmin
+        arguments: [~, AppBundle\Entity\InfosTravailleur, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Specialite, show_mosaic_button: true }
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: InfosTravailleur, show_mosaic_button: true }
         public: true
-    admin.file:
-        class: AppBundle\Admin\FileAdmin
-        arguments: [~, AppBundle\Entity\File, ~]
+    admin.agenda:
+        class: AppBundle\Admin\GestionInfoTravailleur\AgendaAdmin
+        arguments: [~, AppBundle\Entity\Agenda, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Fichier, show_mosaic_button: true }
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: Agenda, show_mosaic_button: true }
         public: true
+    admin.experience:
+        class: AppBundle\Admin\GestionInfoTravailleur\ExperienceAdmin
+        arguments: [~, AppBundle\Entity\Experience, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: Experience, show_mosaic_button: true }
+        public: true
+    admin.diplome:
+        class: AppBundle\Admin\GestionInfoTravailleur\DiplomeAdmin
+        arguments: [~, AppBundle\Entity\Diplome, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Infos Travailleur", label: Diplome, show_mosaic_button: true }
+        public: true
+
+
+
 
     admin.projet:
         class: AppBundle\Admin\GestionProjet\ProjetAdmin
@@ -51,6 +68,8 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Projets", label: Demandes de participation, show_mosaic_button: true }
         public: true
 
+
+
     admin.demandeService:
         class: AppBundle\Admin\GestionService\DemandeServiceAdmin
         arguments: [~, AppBundle\Entity\DemandeService, ~]
@@ -63,6 +82,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Services", label: Solliciter un travailleur, show_mosaic_button: true }
         public: true
+
+
 
     admin.location:
         class: AppBundle\Admin\GestionLocation\LocationAdmin
@@ -81,4 +102,36 @@ services:
         arguments: [~, AppBundle\Entity\DemandeLocation, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Gestion des Locations", label: Gestion des Demandes, show_mosaic_button: true }
+        public: true
+
+
+    admin.specialite:
+        class: AppBundle\Admin\GestionBase\Specialite
+        arguments: [~, AppBundle\Entity\Specialite, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Specialite, show_mosaic_button: true }
+        public: true
+    admin.file:
+        class: AppBundle\Admin\GestionBase\FileAdmin
+        arguments: [~, AppBundle\Entity\File, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Fichier, show_mosaic_button: true }
+        public: true
+    admin.pays:
+        class: AppBundle\Admin\GestionBase\PaysAdmin
+        arguments: [~, AppBundle\Entity\Pays, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Pays, show_mosaic_button: true }
+        public: true
+    admin.ville:
+        class: AppBundle\Admin\GestionBase\VilleAdmin
+        arguments: [~, AppBundle\Entity\Ville, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Ville, show_mosaic_button: true }
+        public: true
+    admin.file:
+        class: AppBundle\Admin\FileAdmin
+        arguments: [~, AppBundle\Entity\File, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Paramètres de Base", label: Fichier, show_mosaic_button: true }
         public: true

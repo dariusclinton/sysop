@@ -1,34 +1,37 @@
 <?php
 
-namespace AppBundle\Admin;
+namespace AppBundle\Admin\GestionInfoTravailleur;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class Specialite extends AbstractAdmin
+class ExperienceAdmin extends AbstractAdmin
 {
 
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('nom', 'text')
-            ->add('description', 'text');
+            ->add('description')
+            ->add('dateFin')
+            ->add('dateDebut');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('nom')
-            ->add('description');
+            ->add('description')
+            ->add('dateFin')
+            ->add('dateDebut');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('nom')
-            ->addIdentifier('description')
+            ->add('description')
+            ->add('dateFin')
+            ->add('dateDebut')
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -41,7 +44,8 @@ class Specialite extends AbstractAdmin
     protected function configureShownFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('nom')
-            ->addIdentifier('description');
+            ->add('description')
+            ->add('dateFin')
+            ->add('dateDebut');
     }
 }
