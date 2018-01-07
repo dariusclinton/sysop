@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 
-class ProfileTravailleurFormType extends AbstractType {
+class ProfileAdminFormType extends AbstractType {
   
   public function buildForm(FormBuilderInterface $builder, array $options) {
   }
@@ -17,7 +17,7 @@ class ProfileTravailleurFormType extends AbstractType {
   
   public function getBlockPrefix()
   {
-      return 'travailleur_profile';
+      return 'admin_profile';
   }
 
   // For Symfony 2.x
