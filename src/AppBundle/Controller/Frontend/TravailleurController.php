@@ -25,8 +25,6 @@ class TravailleurController extends Controller
     		'travailleurs' => $this->metier->findByKeyword($request->query->get('keyword'))
     	);
 
-//        var_dump($parameters);
-
     	return $this->render('AppBundle:Travailleur:rechercher.html.twig', $parameters);
     }
 }

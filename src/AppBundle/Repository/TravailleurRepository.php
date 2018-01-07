@@ -16,7 +16,11 @@ class TravailleurRepository extends \Doctrine\ORM\EntityRepository
         return $this->getEntityManager()->createQuery('
             SELECT t
             FROM AppBundle:Travailleur t
-            WHERE t.username LIKE :keyword
+            JOIN t.ville v
+            JOIN v.pays p
+            WHERE t.username LIKE :keyword 
+                  AND v.nom LIKE :keyword
+                  AND p.nom LIKE :keyword
         ')->setParameters([
             'keyword' => '%' . $keyword . '%',
         ])->getResult();

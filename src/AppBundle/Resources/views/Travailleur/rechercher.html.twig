@@ -3,14 +3,17 @@
 
 {% block content %}
 
-  	<div id="rechercher_travailleur_content">
+    <div id="rechercher_travailleur_content">
+        <div class="container">
+            <h1>Recherche un travailleur</h1>
 
-		<div class="container">
-			<h1>Recherche un travailleur</h1>
-		</div>
-  		
-	 
-  	</div>
+            <hr/>
 
-  
+            {% for t in travailleurs %}
+                <div>{{ t.username }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+
 {% endblock content %}
