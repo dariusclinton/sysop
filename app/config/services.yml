@@ -39,6 +39,9 @@ services:
     app.projet.metier:
         class: AppBundle\Metier\ProjetMetier
         arguments: ["@doctrine.orm.entity_manager"]
+    app.pays.metier:
+        class: AppBundle\Metier\PaysMetier
+        arguments: ["@doctrine.orm.entity_manager"]
     app.solliciter.metier:
         class: AppBundle\Metier\SolliciterMetier
         arguments: ["@doctrine.orm.entity_manager"]
@@ -47,4 +50,7 @@ services:
         arguments: ["@doctrine.orm.entity_manager"]
     app.utilisateur.metier:
         class: AppBundle\Metier\UtilisateurMetier
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.ville.metier:
+        class: AppBundle\Metier\VilleMetier
         arguments: ["@doctrine.orm.entity_manager"]
