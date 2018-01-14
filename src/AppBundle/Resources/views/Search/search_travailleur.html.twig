@@ -24,20 +24,36 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Résultats de votre recherche: xx travailleurs</h3>
+					<h3>Résultats de votre recherche: {{ number }} travailleur(s) trouvés</h3>
 				</div>
 
 				<div class="col-md-3">
 					<h3>Filtres</h3>
+					<form action="{{ path('app_rechercher_tavailleur') }}" id="form_filter">
+						<select class="form-control" name="pays">
+							<option value="pays">Pays</option>
+							{% for p in pays %}
+								<option value="p.nom">{{ p.nom }}</option>
+							{% endfor %}
+						</select>
+						<select class="form-control" name="ville">
+							<option value="ville">Ville</option>
+						</select>
+
+						<button class="btn btn-primary btn-lg btn-sm" type="submit">Rechercher</button>
+					</form>
 				</div>
+
 				<div class="col-md-3">
-					Ici les projets
+					{% for t in travailleurs %}
+						<div>{{ t.username }}</div>
+					{% endfor %}
 				</div>
 
 			</div>
 
 			<div class="row">
-				
+
 			</div>
 		</div>
   		

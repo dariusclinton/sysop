@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SearchController extends Controller
 {
-    
-    
+
+
     /**
      * @Route("/projet/search", name="app_rechercher_projet")
      * @Method("GET")
@@ -29,8 +29,8 @@ class SearchController extends Controller
           return $this->render(
             'AppBundle:Search:search_projet.html.twig', $parameters);
     }
-    
-    
+
+
     /**
      * @Route("/workers/search", name="app_rechercher_tavailleur")
      * @Method("GET")
@@ -38,9 +38,18 @@ class SearchController extends Controller
     public function searchTavailleurAction(Request $request)
     {
         $this->metier = $this->get("app.travailleur.metier");
+        $metier_pays = $this->get("app.pays.metier");
+
+        $result = $this->metier->findByKeyword(
+            $request->query->get('keyword'),
+            ($request->query->get('pays') != 'pays') ? $request->query->get('pays') : null,
+            ($request->query->get('ville') != 'ville') ? $request->query->get('ville') : null
+        );
 
         $parameters = array(
-            'travailleurs' => $this->metier->findByKeyword($request->query->get('keyword'))
+            'travailleurs' => $result,
+            'number' => count($result),
+            'pays' => $metier_pays->findAll()
         );
 
         return $this->render(
