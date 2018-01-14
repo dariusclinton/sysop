@@ -11,22 +11,28 @@ namespace AppBundle\Repository;
 class TravailleurRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findByKeyword($keyword)
+    public function findByKeyword($keyword, $pays = null, $ville = null)
     {
-        return $this->getEntityManager()->createQuery('
-            SELECT t
-            FROM UserBundle:Travailleur t
-            LEFT JOIN t.ville v
-            LEFT JOIN v.pays p
-            LEFT JOIN t.infosTravailleur it
-            LEFT JOIN it.specialites sp
-            WHERE t.username LIKE :keyword
-              OR v.nom LIKE :keyword
-              OR p.nom LIKE :keyword
-              OR sp.nom LIKE :keyword
-              OR sp.description LIKE :keyword
-        ')->setParameters([
-            'keyword' => '%' . $keyword . '%',
-        ])->getResult();
+        $qb = $this->createQueryBuilder('t')
+            ->leftJoin('t.ville', 'v')
+            ->leftJoin('v.pays', 'p')
+            ->leftJoin('t.infosTravailleur', 'it')
+            ->leftJoin('it.specialites', 'sp')
+            ->where('t.username LIKE :keyword')
+            ->orWhere('v.nom LIKE :keyword')
+            ->orWhere('p.nom LIKE :keyword')
+            ->orWhere('sp.nom LIKE :keyword')
+            ->orWhere('sp.description LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%');
+
+        if (!is_null($ville))
+            $qb->andWhere('v.nom = :ville')
+                ->setParameter('ville', $ville);
+
+        if (!is_null($pays))
+            $qb->andWhere('p.nom = :pays')
+                ->setParameter('pays', $pays);
+
+        return $qb->getQuery()->getResult();
     }
 }
