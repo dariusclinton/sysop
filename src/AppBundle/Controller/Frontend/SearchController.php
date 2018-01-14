@@ -20,12 +20,13 @@ class SearchController extends Controller
     public function searchProjetAction(Request $request)
     {
 
+          $this->metier = $this->get("app.projet.metier");
 
-        $parameters = array(
-            'projets' => array()
-        );
+          $parameters = array(
+            'projets' => $this->metier->findByKeyword($request->query->get('keyword'))
+          );
 
-        return $this->render(
+          return $this->render(
             'AppBundle:Search:search_projet.html.twig', $parameters);
     }
     
