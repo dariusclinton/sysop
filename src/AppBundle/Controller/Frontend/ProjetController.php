@@ -23,21 +23,8 @@ class ProjetController extends Controller
     		'form' => null
     	);
 
-    	return $this->render('AppBundle:Projet:deposer.html.twig', $parameters);
+    	return $this->render(
+            'AppBundle:Projet:deposer.html.twig', $parameters);
     }
 
-    /**
-     * @Route("/projet/search", name="app_rechercher_projet")
-     * @Method("GET")
-     */
-    public function searchProjetAction(Request $request)
-    {
-
-
-    	$parameters = array(
-    		'form' => null
-    	);
-
-    	return $this->render('AppBundle:Projet:rechercher.html.twig', $parameters);
-    }
 }

@@ -2,19 +2,16 @@
 
 {% block fos_user_content %}
     <div class="container">
-        <div class="col-md-6">
-            Message pub
+        <div class="col-md-8 text-center">
+           {# <h1>Le compte travailleur SYSOP</h1> #}
+           <p>
+               <img src="{{ asset('bundles/app/img/worker-1.jpg') }}" class="img-responsive"/>
+           </p>
         </div>
-        <div class="col-md-6">
-            Travailleur
-            {% trans_default_domain 'FOSUserBundle' %}
+        <div class="col-md-4">
 
-            {{ form_start(form, {'method': 'post', 'attr': {'class': 'travailleur_registration'}}) }}
-            {{ form_widget(form) }}
-            <div>
-                <input type="submit" value="{{ 'registration.submit'|trans }}" />
-            </div>
-            {{ form_end(form) }}
+            {{ include('UserBundle:Form:form_register_content.html.twig') }}
+            
         </div>
     </div>
 {% endblock fos_user_content %}

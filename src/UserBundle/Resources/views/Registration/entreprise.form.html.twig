@@ -3,23 +3,17 @@
 {% block fos_user_content %}
     <div class="container">
 
-		<div class="row">
-			<div class="col-md-6">
-				<h1>Message pub</h1>
-			</div>
-	    	
-			<div class="col-md-6">
-				Entreprise
-			    {% trans_default_domain 'FOSUserBundle' %}
+		<div class="col-md-8 text-center">
+           {# <h1>Le compte travailleur SYSOP</h1> #}
+           <p>
+               <img src="{{ asset('bundles/app/img/business-1.jpg') }}" class="img-responsive"/>
+           </p>
+        </div>
+        <div class="col-md-4">
 
-			    {{ form_start(form, {'method': 'post', 'attr': {'class': 'entreprise_registration'}}) }}
-			        {{ form_widget(form) }}
-			        <div>
-			            <input type="submit" value="{{ 'registration.submit'|trans }}" />
-			        </div>
-			    {{ form_end(form) }}
-			</div>
-		</div>
+            {{ include('UserBundle:Form:form_register_content.html.twig') }}
+            
+        </div>
 
     </div>
 {% endblock fos_user_content %}
