@@ -36,14 +36,14 @@ class Note
     private $description;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Travailleur")
+    * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Travailleur")
     * @ORM\JoinColumn(nullable=false)
     */
     private $travailleur;
 
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur")
+    * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Utilisateur")
     * @ORM\JoinColumn(nullable=false)
     */
     private $utilisateur;
