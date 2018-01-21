@@ -1,63 +1,73 @@
 {% extends "AppBundle::layout.html.twig" %}
 
-
-
 {% block header %}
-	{# header #}
-  	<div id="header2">
-		<div class="jumbotron">
-	  		<div class="col-md-12 text-center">
-	  			<h1>Déposer un projet</h1>
-	  		</div>
-  		</div>
-  		
-  	</div>	
-  	{# end header #}
+    {# header #}
+    <div id="header2">
+        <div class="jumbotron">
+            <div class="col-md-12 text-center">
+                <h1>Déposer un projet</h1>
+            </div>
+        </div>
+
+    </div>
+    {# end header #}
 {% endblock header %}
 
 {% block content %}
 
-  	<div id="deposer_projet_content">
+    <div id="deposer_projet_content">
 
-		<div class="container">
-			
-			<div class="row">
-				<div class="col-md-8">	
-					
-					<h6>Ici, le formulaire</h6>
+        <div class="container">
 
-				</div>
-				<div class="col-md-4">
-					<div class="row">
-						<div class="col-md-12">
-							<h1>Facile et simple</h1>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem error veniam consectetur ullam accusantium voluptatum quis ipsum cumque, dignissimos aut neque dolore impedit aliquid eos culpa quos voluptatibus distinctio inventore.
-							</p>
-						</div>
-						<div class="col-md-12">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</h2>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									</h2>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			
+            <div class="row">
+                <div class="col-md-8">
 
-		</div>
-  	</div>
-  
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    {{ form_rest(form) }}
+
+                    <br>
+                    <input type="submit" id="_submit" name="_submit" value="Déposer le projet"
+                           class="btn btn-green btn-lg"/>
+
+                    {{ form_end(form) }}
+
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Facile et simple</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem error veniam
+                                consectetur ullam accusantium voluptatum quis ipsum cumque, dignissimos aut neque dolore
+                                impedit aliquid eos culpa quos voluptatibus distinctio inventore.
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit
+                                        amet, consectetur adipisicing elit.
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit
+                                        amet, consectetur adipisicing elit.
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
 {% endblock content %}

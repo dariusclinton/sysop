@@ -31,9 +31,30 @@ class Projet
     /**
      * @var string
      *
+     * @ORM\Column(type="decimal", nullable=true)
+     */
+    private $tarif;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="date")
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="date")
+     */
+    private $dateFin;
     
     /**
     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Utilisateur")
@@ -55,6 +76,11 @@ class Projet
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ville")
      */
     private $villes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Specialite")
+     */
+    private $specialites;
 
     /**
      * Get id
@@ -251,5 +277,111 @@ class Projet
     public function __toString()
     {
         return $this->getLibelle();
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     *
+     * @return Projet
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     *
+     * @return Projet
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Add specialite
+     *
+     * @param \AppBundle\Entity\Specialite $specialite
+     *
+     * @return Projet
+     */
+    public function addSpecialite(\AppBundle\Entity\Specialite $specialite)
+    {
+        $this->specialites[] = $specialite;
+
+        return $this;
+    }
+
+    /**
+     * Remove specialite
+     *
+     * @param \AppBundle\Entity\Specialite $specialite
+     */
+    public function removeSpecialite(\AppBundle\Entity\Specialite $specialite)
+    {
+        $this->specialites->removeElement($specialite);
+    }
+
+    /**
+     * Get specialites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSpecialites()
+    {
+        return $this->specialites;
+    }
+
+    /**
+     * Set tarif
+     *
+     * @param string $tarif
+     *
+     * @return Projet
+     */
+    public function setTarif($tarif)
+    {
+        $this->tarif = $tarif;
+
+        return $this;
+    }
+
+    /**
+     * Get tarif
+     *
+     * @return string
+     */
+    public function getTarif()
+    {
+        return $this->tarif;
     }
 }

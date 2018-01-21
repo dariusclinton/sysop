@@ -43,7 +43,7 @@ class File
      */
     private $updated;
 
-    
+
     /**
      * Get id
      *
@@ -146,5 +146,13 @@ class File
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    public function setFile($file) {
+        $this->file = $file;
+    }
+
+    public function getFile() {
+        return $this->file;
     }
 }
