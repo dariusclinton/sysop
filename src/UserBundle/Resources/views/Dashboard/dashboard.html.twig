@@ -1,0 +1,17 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% extends "UserBundle:Dashboard:layout_dashboard.html.twig" %}
+
+{% block fos_user_content_content %}
+
+	{% if is_granted('ROLE_TRAVAILLEUR') %}
+
+		{{ include('UserBundle:Dashboard:dashboard_travailleur.html.twig') }}
+
+	{% elseif is_granted('ROLE_ENTREPRISE') %}
+
+		{{ include('UserBundle:Dashboard:dashboard_entreprise.html.twig') }}
+
+	{% endif %}
+
+{% endblock fos_user_content_content %}
