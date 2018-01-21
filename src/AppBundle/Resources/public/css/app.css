@@ -62,8 +62,15 @@ HEADER
  	font-weight: bold;
  }
 
+.jumbotron {
+	margin-bottom: 0 !important;
+}
 
 
+.filter {
+	border: 5px solid #2e6da4 !important;
+	padding: 5px;
+}
 
 /*
 ==========================
@@ -207,6 +214,25 @@ TESTIMONIALS
 #search_projet_content {
 	
 }
+
+#search_projet_content .panel {
+	/*border: 1px solid;*/
+}
+
+#search_projet_content .panel .projet_title {
+	margin-top: 0;
+	font-weight: bold;
+}
+
+#search_projet_content .projet_item {
+	display: block;
+	color: #fff;
+}
+
+#search_projet_content .projet_item:hover {
+	text-decoration: none;
+}
+
 
 
 
