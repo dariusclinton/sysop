@@ -149,30 +149,6 @@ class Projet
     }
 
     /**
-     * Set utilisateur
-     *
-     * @param \AppBundle\Entity\Utilisateur $utilisateur
-     *
-     * @return Projet
-     */
-    public function setUtilisateur(\AppBundle\Entity\Utilisateur $utilisateur)
-    {
-        $this->utilisateur = $utilisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get utilisateur
-     *
-     * @return \AppBundle\Entity\Utilisateur
-     */
-    public function getUtilisateur()
-    {
-        return $this->utilisateur;
-    }
-
-    /**
      * Add attributionsProjet
      *
      * @param \AppBundle\Entity\AttributionProjet $attributionsProjet
@@ -383,5 +359,29 @@ class Projet
     public function getTarif()
     {
         return $this->tarif;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \UserBundle\Entity\Utilisateur $utilisateur
+     *
+     * @return Projet
+     */
+    public function setUtilisateur(\UserBundle\Entity\Utilisateur $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \UserBundle\Entity\Utilisateur
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }
