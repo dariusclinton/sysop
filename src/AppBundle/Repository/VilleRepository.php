@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class VilleRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+    public function listVilleByPays($pays)
+    {
+        $qb = $this->createQueryBuilder('v')
+            ->join('v.pays', 'p')
+            ->where('p.id = :id')
+            ->setParameter('id', $pays)
+            ->getQuery();
+
+        return $qb->getArrayResult();
+    }
 }

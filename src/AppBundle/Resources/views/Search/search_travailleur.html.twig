@@ -28,15 +28,21 @@
 				</div>
 
 				<div class="col-md-3">
-					<h3>Filtres</h3>
+					<h3>Filtrer par</h3>
 					<form action="{{ path('app_rechercher_tavailleur') }}" id="form_filter">
-						<select class="form-control" name="pays">
+						<select class="form-control" name="specialite" id="specialites">
+							<option value="specialite">Spécialité</option>
+                            {% for sp in specialites %}
+								<option value="{{ sp.id }}">{{ sp.nom }}</option>
+                            {% endfor %}
+						</select>
+						<select class="form-control" name="pays" id="pays">
 							<option value="pays">Pays</option>
 							{% for p in pays %}
-								<option value="p.nom">{{ p.nom }}</option>
+								<option value="{{ p.id }}">{{ p.nom }}</option>
 							{% endfor %}
 						</select>
-						<select class="form-control" name="ville">
+						<select class="form-control" name="ville" id="villes">
 							<option value="ville">Ville</option>
 						</select>
 
@@ -62,3 +68,33 @@
 
   
 {% endblock content %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+	<script>
+		$(function () {
+			$('#pays').change(function() {
+				var pays = $(this).val()
+				$.ajax({
+					type: 'get',
+					url: Routing.generate('getVilleByPays', {"pays": pays}),
+					beforeSend: function () {
+					},
+					success: function (data) {
+						var result = data;
+						console.log(result);
+						$("#villes").html(new Option("Ville", "ville"))
+						result.forEach(function (r) {
+							console.log(r);
+							$("#villes").append(new Option(r.nom, r.id));
+						});
+					},
+					error: function (data) {
+						console.log(data);
+					}
+				});
+			})
+		})
+	</script>
+{% endblock %}

@@ -11,7 +11,7 @@ namespace AppBundle\Repository;
 class TravailleurRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findByKeyword($keyword, $pays = null, $ville = null)
+    public function findByKeyword($keyword, $pays = null, $ville = null, $specialite = null)
     {
         $qb = $this->createQueryBuilder('t')
             ->leftJoin('t.ville', 'v')
@@ -26,12 +26,16 @@ class TravailleurRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('keyword', '%' . $keyword . '%');
 
         if (!is_null($ville))
-            $qb->andWhere('v.nom = :ville')
+            $qb->andWhere('v.id = :ville')
                 ->setParameter('ville', $ville);
 
         if (!is_null($pays))
-            $qb->andWhere('p.nom = :pays')
+            $qb->andWhere('p.id = :pays')
                 ->setParameter('pays', $pays);
+
+        if (!is_null($specialite))
+            $qb->andWhere('sp.id = :spec')
+                ->setParameter('spec', $specialite);
 
         return $qb->getQuery()->getResult();
     }

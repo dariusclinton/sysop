@@ -45,6 +45,9 @@ services:
     app.solliciter.metier:
         class: AppBundle\Metier\SolliciterMetier
         arguments: ["@doctrine.orm.entity_manager"]
+    app.specialite.metier:
+        class: AppBundle\Metier\SpecialiteMetier
+        arguments: ["@doctrine.orm.entity_manager"]
     app.travailleur.metier:
         class: AppBundle\Metier\TravailleurMetier
         arguments: ["@doctrine.orm.entity_manager"]
