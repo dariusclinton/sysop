@@ -24,30 +24,39 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Résultats de votre recherche: {{ number }} travailleur(s) trouvés</h3>
+					<h3>Résultats de votre recherche: {{ number }} travailleur{% if number > 1 %}s{% endif %} </h3>
 				</div>
 
 				<div class="col-md-3">
-					<h3>Filtrer par</h3>
-					<form action="{{ path('app_rechercher_tavailleur') }}" id="form_filter">
-						<select class="form-control" name="specialite" id="specialites">
-							<option value="specialite">Spécialité</option>
-                            {% for sp in specialites %}
-								<option value="{{ sp.id }}">{{ sp.nom }}</option>
-                            {% endfor %}
-						</select>
-						<select class="form-control" name="pays" id="pays">
-							<option value="pays">Pays</option>
-							{% for p in pays %}
-								<option value="{{ p.id }}">{{ p.nom }}</option>
-							{% endfor %}
-						</select>
-						<select class="form-control" name="ville" id="villes">
-							<option value="ville">Ville</option>
-						</select>
+					{# .filter #}
+					<div class="filter">
+						<h3 class="text-center">Filtres</h3>
+						<form action="{{ path('app_rechercher_tavailleur') }}" id="form_filter">
+							<h3 class="page-header"></h3>
+							<select class="form-control" name="specialite" id="specialites">
+								<option value="specialite">Spécialité</option>
+	                            {% for sp in specialites %}
+									<option value="{{ sp.id }}">{{ sp.nom }}</option>
+	                            {% endfor %}
+							</select>
+							<h3 class="page-header"></h3>
+							<select class="form-control" name="pays" id="pays">
+								<option value="pays">Pays</option>
+								{% for p in pays %}
+									<option value="{{ p.id }}">{{ p.nom }}</option>
+								{% endfor %}
+							</select>
+							<div class="">
+								<h3 class="page-header"></h3>
+								<select class="form-control" name="ville" id="villes">
+									<option value="ville">Ville</option>
+								</select>
+							</div>
 
-						<button class="btn btn-primary btn-lg btn-sm" type="submit">Rechercher</button>
-					</form>
+							<button class="btn btn-primary btn-block" type="submit">Rechercher</button>
+						</form>
+					</div>
+					{# /.filter #}
 				</div>
 
 				<div class="col-md-3">
