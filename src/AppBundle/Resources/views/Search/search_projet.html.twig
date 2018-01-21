@@ -29,9 +29,41 @@
 
 				<div class="col-md-3">
 					<h3>Filtres</h3>
-				</div>
+						<form action="{{ path('app_rechercher_projet') }}" id="form_filter">
+							<select class="form-control" name="utilisateur">
+								<option value="utilisateur">Utilisateur</option>
+								{% for u in utilisateurs %}
+									<option value="u.username">{{ u.username }}</option>
+								{% endfor %}
+							</select>
+							
+
+							<button class="btn btn-primary btn-lg btn-sm" type="submit">Rechercher</button>
+						</form>
+				   </div>
 				<div class="col-md-3">
-					Ici les projets
+
+
+                   
+
+					<div class="col-md-3">
+						{% for p in projets %}
+						
+						    <ul>
+						      <li><div>{{ p.libelle }}</div></li>
+						      <li><div>{{ p.description }}</div></li>
+						    </ul>
+							
+							
+						{% endfor %}
+					</div>
+
+
+
+
+
+
+
 				</div>
 
 			</div>

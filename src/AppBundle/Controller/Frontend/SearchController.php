@@ -21,10 +21,23 @@ class SearchController extends Controller
     {
 
           $this->metier = $this->get("app.projet.metier");
+          $metier_utilisateur = $this->get("app.utilisateur.metier");
 
           $parameters = array(
             'projets' => $this->metier->findByKeyword($request->query->get('keyword'))
           );
+
+           $result = $this->metier->findByKeyword(
+            $request->query->get('keyword'),
+            ($request->query->get('utilisateur') != 'utilisateur') ? $request->query->get('utilisateur') : null
+            );
+
+            $parameters = array(
+                'projets' => $result,
+                'number' => count($result),
+                'utilisateurs' => $metier_utilisateur->findAll()
+            );
+
 
           return $this->render(
             'AppBundle:Search:search_projet.html.twig', $parameters);
