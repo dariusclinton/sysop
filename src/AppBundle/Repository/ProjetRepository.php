@@ -11,20 +11,33 @@ namespace AppBundle\Repository;
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
 
-	public function findByKeyword($keyword)
+	public function findByKeyword($keyword, $utilisateur = null)
     {
 
-        $qb = this.createQueryBuilder('p')
+        
 
-
-        return $this->getEntityManager()->createQuery('
+        /*return $this->getEntityManager()->createQuery('
             SELECT p
             FROM AppBundle:Projet p
             WHERE p.libelle LIKE :keyword
                   OR p.description LIKE :keyword
         ')->setParameters([
             'keyword' => '%' . $keyword . '%',
-        ])->getResult();
+        ])->getResult();*/
+
+
+       $qb = $this->createQueryBuilder('p')
+            ->leftJoin('p.utilisateur', 'u')
+            ->where('p.libelle LIKE :keyword')
+            ->orWhere('p.description LIKE :keyword')
+            ->orWhere('u.adresse LIKE :keyword')
+            ->setParameter('keyword', '%' . $keyword . '%');
+
+        if (!is_null($utilisateur))
+            $qb->andWhere('u.adresse = :utilisateur')
+                ->setParameter('utilisateur', $utilisateur);       
+
+        return $qb->getQuery()->getResult();
     }
 }
 
