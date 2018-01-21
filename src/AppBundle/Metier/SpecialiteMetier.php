@@ -8,15 +8,15 @@
 
 namespace AppBundle\Metier;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Ville;
+use AppBundle\Entity\Specialite;
 
 /**
- * Description of VilleMetier
+ * Description of SpecialiteMetier
  *
  * @author fd
  */
 
-class VilleMetier {
+class SpecialiteMetier {
     private $em;
 
     public function __construct(EntityManager $em) {
@@ -24,27 +24,27 @@ class VilleMetier {
     }
 
     public function getRepository() {
-        return $this->em->getRepository("AppBundle:Ville");
+        return $this->em->getRepository("AppBundle:Specialite");
     }
 
-    public function create(Ville $ville) {
-        $this->em->persist($ville);
+    public function create(Specialite $Specialite) {
+        $this->em->persist($Specialite);
         $this->em->flush();
-        return $ville;
+        return $Specialite;
     }
 
     public function delete($id) {
-        $ville = $this->getRepository()->find($id);
-        if ($ville) {
-            $this->em->remove($ville);
+        $Specialite = $this->getRepository()->find($id);
+        if ($Specialite) {
+            $this->em->remove($Specialite);
             $this->em->flush();
         }
     }
 
-    public function update(Ville $ville) {
-        $this->em->update($ville);
+    public function update(Specialite $Specialite) {
+        $this->em->update($Specialite);
         $this->em->flush();
-		return $ville;
+		return $Specialite;
     }
 
     public function findAll() {
@@ -53,9 +53,5 @@ class VilleMetier {
     
 	public function find($id) {
         return $this->getRepository()->find($id);
-    }
-
-    public function getVillesByPays($pays) {
-        return $this->getRepository()->listVilleByPays($pays);
     }
 }
