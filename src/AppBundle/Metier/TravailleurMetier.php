@@ -55,7 +55,7 @@ class TravailleurMetier {
         $this->getRepository()->find($id);
     }
 
-    public function findByKeyword($keyword) {
-        return $this->getRepository()->findByKeyword($keyword);
+    public function findByKeyword($keyword, $pays, $ville, $specialite) {
+        return $this->getRepository()->findByKeyword($keyword, $pays, $ville, $specialite);
     }
 }
