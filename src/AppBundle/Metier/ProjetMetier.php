@@ -54,4 +54,8 @@ class ProjetMetier {
 	public function find($id) {
         $this->getRepository()->find($id);
     }
+
+    public function findByKeyword($keyword) {
+        return $this->getRepository()->findByKeyword($keyword);
+    }
 }

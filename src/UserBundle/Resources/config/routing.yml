@@ -1,6 +1,6 @@
-user_homepage:
-    path:     /
-    defaults: { _controller: UserBundle:Default:index }
+user_dashboard:
+    path:     /dashboard
+    defaults: { _controller: UserBundle:Dashboard:dashboard }
 
 admin_registration:
     path:  /register/admin
@@ -13,3 +13,19 @@ travailleur_registration:
 entreprise_registration:
     path:  /register/entreprise
     defaults: { _controller: UserBundle:RegistrationEntreprise:register }
+
+user_travailleur_agenda:
+    path:     /worker/agenda
+    defaults: { _controller: UserBundle:Compte:agenda }
+
+user_travailleur_diplomes:
+    path:     /worker/diplomes
+    defaults: { _controller: UserBundle:Compte:diplomes }
+
+user_travailleur_experiences:
+    path:     /worker/experiences
+    defaults: { _controller: UserBundle:Compte:experiences }
+
+user_travailleur_specialites:
+    path:     /worker/specialites
+    defaults: { _controller: UserBundle:Compte:specialites }

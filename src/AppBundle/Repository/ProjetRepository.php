@@ -10,4 +10,23 @@ namespace AppBundle\Repository;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	public function findByKeyword($keyword)
+    {
+
+        $qb = this.createQueryBuilder('p')
+
+
+        return $this->getEntityManager()->createQuery('
+            SELECT p
+            FROM AppBundle:Projet p
+            WHERE p.libelle LIKE :keyword
+                  OR p.description LIKE :keyword
+        ')->setParameters([
+            'keyword' => '%' . $keyword . '%',
+        ])->getResult();
+    }
 }
+
+
+ 
