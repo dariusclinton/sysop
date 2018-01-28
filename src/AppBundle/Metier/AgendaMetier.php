@@ -8,15 +8,15 @@
 
 namespace AppBundle\Metier;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Specialite;
+use AppBundle\Entity\Agenda;
 
 /**
- * Description of SpecialiteMetier
+ * Description of AgendaMetier
  *
  * @author fd
  */
 
-class SpecialiteMetier {
+class AgendaMetier {
     private $em;
 
     public function __construct(EntityManager $em) {
@@ -24,27 +24,27 @@ class SpecialiteMetier {
     }
 
     public function getRepository() {
-        return $this->em->getRepository("AppBundle:Specialite");
+        return $this->em->getRepository("AppBundle:Agenda");
     }
 
-    public function create(Specialite $Specialite) {
-        $this->em->persist($Specialite);
+    public function create(Agenda $agenda) {
+        $this->em->persist($agenda);
         $this->em->flush();
-        return $Specialite;
+        return $agenda;
     }
 
     public function delete($id) {
-        $Specialite = $this->getRepository()->find($id);
-        if ($Specialite) {
-            $this->em->remove($Specialite);
+        $agenda = $this->getRepository()->find($id);
+        if ($agenda) {
+            $this->em->remove($agenda);
             $this->em->flush();
         }
     }
 
-    public function update(Specialite $Specialite) {
-        $this->em->update($Specialite);
+    public function update(Agenda $agenda) {
+        $this->em->merge($agenda);
         $this->em->flush();
-		return $Specialite;
+		return $agenda;
     }
 
     public function findAll() {
@@ -53,9 +53,5 @@ class SpecialiteMetier {
     
 	public function find($id) {
         return $this->getRepository()->find($id);
-    }
-
-	public function listSpecialitesByUser($id) {
-        return $this->getRepository()->listSpecialitesByUser($id);
     }
 }

@@ -36,7 +36,7 @@ class Specialite
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\InfosTravailleur", mappedBy="specialite")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\InfosTravailleur", mappedBy="specialites")
      */
     private $InfosTravailleurs;
 

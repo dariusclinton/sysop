@@ -10,4 +10,17 @@ namespace AppBundle\Repository;
  */
 class SpecialiteRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function listSpecialitesByUser($user)
+    {
+        $qb = $this->createQueryBuilder('sp')
+            ->join('sp.InfosTravailleurs', 'it')
+//            ->join('it.specialites', 'sp_test')
+            ->join('it.travailleur', 't')
+            ->where('t.id = :id_user')
+//            ->andWhere('sp.id <> sp_test.id')
+            ->setParameter('id_user', $user)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
 }

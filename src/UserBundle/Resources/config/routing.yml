@@ -18,14 +18,46 @@ user_travailleur_agenda:
     path:     /worker/agenda
     defaults: { _controller: UserBundle:Compte:agenda }
 
+user_travailleur_remove_evenement:
+    path:     /worker/remove/evenement/{evenement}
+    defaults: { _controller: UserBundle:Compte:removeEvenement }
+
+user_travailleur_update_evenement:
+    path:     /worker/update/evenement/{evenement}
+    defaults: { _controller: UserBundle:Compte:updateEvenement }
+
 user_travailleur_diplomes:
     path:     /worker/diplomes
     defaults: { _controller: UserBundle:Compte:diplomes }
+
+user_travailleur_remove_diplome:
+    path:     /worker/remove/diplome/{diplome}
+    defaults: { _controller: UserBundle:Compte:removeDiplome }
+
+user_travailleur_update_diplome:
+    path:     /worker/update/diplome/{diplome}
+    defaults: { _controller: UserBundle:Compte:updateDiplome }
 
 user_travailleur_experiences:
     path:     /worker/experiences
     defaults: { _controller: UserBundle:Compte:experiences }
 
+user_travailleur_remove_experience:
+    path:     /worker/remove/experience/{experience}
+    defaults: { _controller: UserBundle:Compte:removeExperience }
+
+user_travailleur_update_experience:
+    path:     /worker/update/experience/{experience}
+    defaults: { _controller: UserBundle:Compte:updateExperience }
+
 user_travailleur_specialites:
     path:     /worker/specialites
     defaults: { _controller: UserBundle:Compte:specialites }
+
+user_travailleur_add_specialites:
+    path:     /worker/add/specialites
+    defaults: { _controller: UserBundle:Compte:addSpecialite }
+
+user_travailleur_remove_specialite:
+    path:     /worker/remove/specialite/{specialite}
+    defaults: { _controller: UserBundle:Compte:removeSpecialite }

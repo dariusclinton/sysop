@@ -42,7 +42,7 @@ class Travailleur extends Utilisateur
     private $sollicites;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfosTravailleur")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfosTravailleur", inversedBy="travailleur")
      * @ORM\JoinColumn(nullable=true)
      */
     private $infosTravailleur;
