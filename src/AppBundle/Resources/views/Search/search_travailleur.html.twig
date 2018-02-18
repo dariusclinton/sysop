@@ -18,13 +18,16 @@
 
 {% block content %}
 
+	{# search_worker_content #}
   	<div id="search_worker_content">
 
+		{# .container #}
 		<div class="container">
 			
 			<div class="row">
 				<div class="col-md-12">
 					<h3>Résultats de votre recherche: {{ number }} travailleur{% if number > 1 %}s{% endif %} </h3>
+					<br><br>
 				</div>
 
 				<div class="col-md-3">
@@ -32,49 +35,85 @@
 					<div class="filter">
 						<h3 class="text-center">Filtres</h3>
 						<form action="{{ path('app_rechercher_tavailleur') }}" id="form_filter">
-							<h3 class="page-header"></h3>
+							<h5 class="page-header"><strong>Spécialité</strong></h5>
 							<select class="form-control" name="specialite" id="specialites">
 								<option value="specialite">Spécialité</option>
 	                            {% for sp in specialites %}
 									<option value="{{ sp.id }}">{{ sp.nom }}</option>
 	                            {% endfor %}
 							</select>
-							<h3 class="page-header"></h3>
+							<h5 class="page-header"><strong>Pays</strong></h5>
 							<select class="form-control" name="pays" id="pays">
 								<option value="pays">Pays</option>
 								{% for p in pays %}
 									<option value="{{ p.id }}">{{ p.nom }}</option>
 								{% endfor %}
 							</select>
-							<div class="">
-								<h3 class="page-header"></h3>
+							<div class="form-group">
+								<h5 class="page-header"><strong>Ville</strong></h5>
 								<select class="form-control" name="ville" id="villes">
 									<option value="ville">Ville</option>
 								</select>
 							</div>
 
-							<button class="btn btn-primary btn-block" type="submit">Rechercher</button>
+							<button class="btn btn-primary btn-block btn-lg" type="submit">Filtrer</button>
 						</form>
 					</div>
+
 					{# /.filter #}
 				</div>
 
-				<div class="col-md-3">
-					{% for t in travailleurs %}
-						<div>{{ t.username }}</div>
-					{% endfor %}
+				<div class="col-md-9">
+				
+					{% if number < 1 %}
+
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<i class="fa fa-frown-o fa-4x"></i>
+								<h4>Nous n'avons pas trouvé de résultats pour votre recherche!</h4>
+								<h5>Veuillez essayer autre chose</h5>
+							</div>
+						</div>
+
+					{% else %}
+
+						<div class="row">
+							{% for t in travailleurs %}
+							<div class="col-md-4">
+								<div class="panel">
+									<div class="panel-body text-center">
+									    <a href="{{ path('app_travailleur_public_profile', {'slug': t.slug}) }}" class="search_item">
+									    	{# <ul>
+										      <li><div>{{ p.libelle }}</div></li>
+										      <li><div>{{ p.description }}</div></li>
+										    </ul> #}
+										    <img src="{{ asset('bundles/app/img/avatar-1.png') }}" class="img-responsive img-circle">
+										    <h3 class="projet_title">{{ t.username }}</h3>
+										    <p>
+										    	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										    </p>
+									    </a>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+
+							{# display navigation #}
+							<div class="navigation">
+							    {# {{ knp_pagination_render(pagination) }} #}
+							</div>
+						</div>
+
+					{% endif %}
 				</div>
-
 			</div>
 
-			<div class="row">
 
-			</div>
 		</div>
-  		
-	 
+  		{# /.container #}
+	 	
   	</div>
-
+	{# search_worker_content #}
   
 {% endblock content %}
 

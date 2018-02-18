@@ -17,25 +17,40 @@ class ProjetType extends AbstractType
         $builder
             ->add('libelle')
             ->add('description', null, [
-                'required' => false,
+                'attr' => array(
+                    'rows' => 10,
+                    'cols' => 40
+                ),
             ])
             ->add('tarif', null, [
                 'required' => false,
             ])
-            ->add('dateDebut')
-            ->add('dateFin')
+            ->add('dateDebut', 'date', array(
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => array('class' => 'js-datepicker form-control'),
+            ))
+            ->add('dateFin', 'date', array(
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => array('class' => 'js-datepicker form-control'),
+            ))
 //            ->add('utilisateur')
             ->add('villes', 'entity', [
                 'class' => 'AppBundle:Ville',
                 'choice_label' => 'nom',
                 'multiple' => true,
                 'required' => true,
+                'attr' => array(
+                    'class' => 'select2-ville form-control',
+                )
             ])
             ->add('specialites', 'entity', [
                 'class' => 'AppBundle:Specialite',
                 'choice_label' => 'nom',
                 'multiple' => true,
                 'required' => true,
+                'attr' => array('class' => 'select2-specialites form-control')
             ]);
     }
     

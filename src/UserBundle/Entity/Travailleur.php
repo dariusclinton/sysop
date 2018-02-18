@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -22,7 +23,11 @@ class Travailleur extends Utilisateur
     protected $id;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Note", mappedBy="travailleur", cascade={"persist","remove"})
+    * @ORM\OneToMany(
+    *     targetEntity="AppBundle\Entity\Note", 
+    *     mappedBy="travailleur", 
+    *     cascade={"persist","remove"}
+    *)
     */
     private $notes;
 
@@ -37,15 +42,17 @@ class Travailleur extends Utilisateur
     private $demandesParticipation;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solliciter", mappedBy="travailleur")
-    */
-    private $sollicites;
-
-    /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfosTravailleur")
      * @ORM\JoinColumn(nullable=true)
      */
     private $infosTravailleur;
+
+    /**
+     * @Gedmo\Slug(fields={"nom", "prenom"})
+     * @ORM\Column(length=200, unique=true)
+     */
+    private $slug;
+    
 
     public function __construct()
     {
@@ -63,6 +70,7 @@ class Travailleur extends Utilisateur
     public function addNote(\AppBundle\Entity\Note $note)
     {
         $this->notes[] = $note;
+        $note->setTravailleur($this);
 
         return $this;
     }
@@ -211,5 +219,29 @@ class Travailleur extends Utilisateur
     public function getInfosTravailleur()
     {
         return $this->infosTravailleur;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Travailleur
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

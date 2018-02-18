@@ -23,46 +23,52 @@ abstract class Utilisateur extends BaseUser
      */
     protected $id;
 
+
+    /**
+     * @ORM\Column(name="nom", type="string", length=100)
+     */
+    protected $nom;
+
+    /**
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=true)
+     */
+    protected $prenom;
+
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $adresse;
+    protected $adresse;
 
     /**
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Projet", mappedBy="utilisateur")
     */
-    private $projets;
+    protected $projets;
 
     /**
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solliciter", mappedBy="utilisateur")
     */
-    private $sollicites;
+    protected $sollicites;
 
     /**
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeLocation", mappedBy="utilisateur")
     */
-    private $demandesLocation;
+    protected $demandesLocation;
 
     /**
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\DemandeService", mappedBy="utilisateur")
     */
-    private $demandesService;
+    protected $demandesService;
 
     /**
     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Location", mappedBy="utilisateur")
     */
-    private $locations;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Note", mappedBy="utilisateur")
-     */
-    private $notes;
+    protected $locations;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $ville;
+    protected $ville;
 
     public function __construct()
     {
@@ -264,39 +270,6 @@ abstract class Utilisateur extends BaseUser
         return $this->adresse;
     }
 
-    /**
-     * Add note
-     *
-     * @param \AppBundle\Entity\Note $note
-     *
-     * @return Utilisateur
-     */
-    public function addNote(\AppBundle\Entity\Note $note)
-    {
-        $this->notes[] = $note;
-
-        return $this;
-    }
-
-    /**
-     * Remove note
-     *
-     * @param \AppBundle\Entity\Note $note
-     */
-    public function removeNote(\AppBundle\Entity\Note $note)
-    {
-        $this->notes->removeElement($note);
-    }
-
-    /**
-     * Get notes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNotes()
-    {
-        return $this->notes;
-    }
 
     /**
      * Set ville
@@ -320,5 +293,53 @@ abstract class Utilisateur extends BaseUser
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Utilisateur
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return Utilisateur
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
     }
 }

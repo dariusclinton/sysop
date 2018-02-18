@@ -39,11 +39,8 @@ HEADER
  #header2 .jumbotron {
 	height: 100px;
 	color: #555 !important;
- }
-
-  #header2 .jumbotron {
   	padding-top: 0;
-  }
+ }
 
   #header2 .jumbotron h1 {
   	font-size: 40px;
@@ -61,10 +58,10 @@ HEADER
  	margin-top: 0;
  	font-weight: bold;
  }
-
-.jumbotron {
+/*
+#header2 .jumbotron {
 	margin-bottom: 0 !important;
-}
+}*/
 
 
 .filter {
@@ -224,12 +221,12 @@ TESTIMONIALS
 	font-weight: bold;
 }
 
-#search_projet_content .projet_item {
+#search_projet_content .search_item {
 	display: block;
 	color: #fff;
 }
 
-#search_projet_content .projet_item:hover {
+#search_projet_content .search_item:hover {
 	text-decoration: none;
 }
 
@@ -246,6 +243,18 @@ TESTIMONIALS
 
 }
 
+#search_worker_content .search_item {
+	display: block;
+	color: #555;
+}
+
+#search_worker_content .search_item:hover {
+	text-decoration: none;
+	/*border: 1px solid;
+	display: inline-block;
+	text-decoration: none;
+	transition: 150ms;*/
+}
 
 
 

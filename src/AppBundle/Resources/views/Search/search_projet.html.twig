@@ -42,22 +42,22 @@
 					<h3 class="text-center">Filtres</h3>
 					<form action="{{ path('app_rechercher_projet') }}" id="form_filter">
 						<div>
-							<h5 class="page-header text-center">Filtre 1</h5>
+							{# <h5 class="page-header"><strong></strong></h5>
 							<select class="form-control" name="utilisateur">
 								<option value="utilisateur">Utilisateur</option>
 								{% for u in utilisateurs %}
 									<option value="u.username">{{ u.username }}</option>
 								{% endfor %}
-							</select>	
+							</select>	 #}
 						</div>
 						<div>
-							<h5 class="page-header text-center">Filtre 1</h5>
+							<h5 class="page-header"><strong>Filtre 1</strong></h5>
 						</div>
-							<h5 class="page-header text-center">Filtre 2</h5>
+							<h5 class="page-header"><strong>Filtre 2</strong></h5>
 						<div>
-							<h5 class="page-header text-center">Filtre 3</h5>
+							<h5 class="page-header"><strong>Filtre 3</strong></h5>
 						</div>
-						<button class="btn btn-primary btn-block" type="submit">Filtrer</button>
+						<button class="btn btn-primary btn-block btn-lg" type="submit">Filtrer</button>
 					</form>
 				</div>
 				{# /.filter #}
@@ -82,7 +82,7 @@
 						<div class="col-md-12">
 							<div class="panel">
 								<div class="panel-body bg-primary">
-								    <a href="#" class="projet_item">
+								    <a href="#" class="search_item">
 								    	{# <ul>
 									      <li><div>{{ p.libelle }}</div></li>
 									      <li><div>{{ p.description }}</div></li>
