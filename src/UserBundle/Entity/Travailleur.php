@@ -2,9 +2,10 @@
 
 namespace UserBundle\Entity;
 
+use AppBundle\Entity\InfosTravailleur;
 use Doctrine\ORM\Mapping as ORM;
-use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
@@ -42,7 +43,16 @@ class Travailleur extends Utilisateur
     private $demandesParticipation;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\InfosTravailleur")
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Solliciter", mappedBy="travailleur")
+    */
+    protected $sollicites;
+
+    /**
+     * @ORM\OneToOne(
+     *     targetEntity="AppBundle\Entity\InfosTravailleur", 
+     *     inversedBy="travailleur",
+     *     cascade={"persist", "remove"}
+     * )
      * @ORM\JoinColumn(nullable=true)
      */
     private $infosTravailleur;
@@ -58,6 +68,7 @@ class Travailleur extends Utilisateur
     {
         parent::__construct();
         $this->roles = array('ROLE_TRAVAILLEUR');
+        $this->infosTravailleur = new InfosTravailleur();
     }
 
     /**

@@ -22,13 +22,13 @@ class InfosTravailleur
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Agenda")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Agenda", mappedBy="travailleur")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $agenda;
 
     /**
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Travailleur", mappedBy="travailleur")
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Travailleur", mappedBy="infosTravailleur")
      * @ORM\JoinColumn(nullable=false)
      */
     private $travailleur;
@@ -94,11 +94,11 @@ class InfosTravailleur
     /**
      * Set travailleur
      *
-     * @param \AppBundle\Entity\Travailleur $travailleur
+     * @param \UserBundle\Entity\Travailleur $travailleur
      *
      * @return InfosTravailleur
      */
-    public function setTravailleur(\AppBundle\Entity\Travailleur $travailleur)
+    public function setTravailleur(\UserBundle\Entity\Travailleur $travailleur)
     {
         $this->travailleur = $travailleur;
 
@@ -108,7 +108,7 @@ class InfosTravailleur
     /**
      * Get travailleur
      *
-     * @return \AppBundle\Entity\Travailleur
+     * @return \UserBundle\Entity\Travailleur
      */
     public function getTravailleur()
     {

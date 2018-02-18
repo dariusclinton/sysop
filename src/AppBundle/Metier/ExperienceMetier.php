@@ -8,15 +8,15 @@
 
 namespace AppBundle\Metier;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Specialite;
+use AppBundle\Entity\Experience;
 
 /**
- * Description of SpecialiteMetier
+ * Description of ExperienceMetier
  *
  * @author fd
  */
 
-class SpecialiteMetier {
+class ExperienceMetier {
     private $em;
 
     public function __construct(EntityManager $em) {
@@ -24,27 +24,27 @@ class SpecialiteMetier {
     }
 
     public function getRepository() {
-        return $this->em->getRepository("AppBundle:Specialite");
+        return $this->em->getRepository("AppBundle:Experience");
     }
 
-    public function create(Specialite $Specialite) {
-        $this->em->persist($Specialite);
+    public function create(Experience $experience) {
+        $this->em->persist($experience);
         $this->em->flush();
-        return $Specialite;
+        return $experience;
     }
 
     public function delete($id) {
-        $Specialite = $this->getRepository()->find($id);
-        if ($Specialite) {
-            $this->em->remove($Specialite);
+        $experience = $this->getRepository()->find($id);
+        if ($experience) {
+            $this->em->remove($experience);
             $this->em->flush();
         }
     }
 
-    public function update(Specialite $Specialite) {
-        $this->em->update($Specialite);
+    public function update(Experience $experience) {
+        $this->em->merge($experience);
         $this->em->flush();
-		return $Specialite;
+		return $experience;
     }
 
     public function findAll() {
@@ -53,9 +53,5 @@ class SpecialiteMetier {
     
 	public function find($id) {
         return $this->getRepository()->find($id);
-    }
-
-	public function listSpecialitesByUser($id) {
-        return $this->getRepository()->listSpecialitesByUser($id);
     }
 }

@@ -27,6 +27,21 @@ services:
     app.entreprise.metier:
         class: AppBundle\Metier\EntrepriseMetier
         arguments: ["@doctrine.orm.entity_manager"]
+    app.evenement.metier:
+        class: AppBundle\Metier\EvenementMetier
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.agenda.metier:
+        class: AppBundle\Metier\AgendaMetier
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.experience.metier:
+        class: AppBundle\Metier\ExperienceMetier
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.diplome.metier:
+        class: AppBundle\Metier\DiplomeMetier
+        arguments: ["@doctrine.orm.entity_manager"]
+    app.infosTravailleur.metier:
+        class: AppBundle\Metier\InfosTravailleurMetier
+        arguments: ["@doctrine.orm.entity_manager"]
     app.location.metier:
         class: AppBundle\Metier\LocationMetier
         arguments: ["@doctrine.orm.entity_manager"]
